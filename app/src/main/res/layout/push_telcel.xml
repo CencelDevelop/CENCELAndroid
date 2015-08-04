@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+    android:id="@+id/widget0"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <TextView
+        android:id="@+id/widget40"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:text="PUSH TELCEL"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="#fff466b5"
+        android:layout_x="64dp"
+        android:layout_y="21dp" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/psht"
+        android:layout_x="100dp"
+        android:layout_y="197dp" />
+
+</AbsoluteLayout>

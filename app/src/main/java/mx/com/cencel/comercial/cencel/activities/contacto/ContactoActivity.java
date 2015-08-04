@@ -1,0 +1,152 @@
+package mx.com.cencel.comercial.cencel.activities.contacto;
+
+import android.app.Activity;
+
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
+
+import mx.com.cencel.comercial.cencel.R;
+
+import mx.com.cencel.comercial.cencel.activities.stores.StoreArrayAdapter;
+
+import mx.com.cencel.comercial.cencel.pojo.StoreSimple;
+import mx.com.cencel.comercial.cencel.util.CencelUtils;
+
+
+/**
+ * Created by vcid on 03/08/15.
+ */
+public class ContactoActivity extends Activity {
+    public EditText email;
+    private EditText nombre;
+    private EditText telefono;
+    private EditText comentario;
+    private Button Enviar;
+
+
+    private StoreArrayAdapter adapter;
+    private static StoreSimple storeSelected;
+
+
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.contacto);
+
+        email = (EditText)findViewById(R.id.Email);
+        nombre = (EditText)findViewById(R.id.Nombre);
+        telefono = (EditText)findViewById(R.id.Telefono);
+        comentario = (EditText)findViewById(R.id.Comentario);
+        Enviar = (Button)findViewById(R.id.enviar);
+
+        Enviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // cuando se hace click en el boton
+
+                // validaciones de datos de entrada
+                //que sea correo
+                //numero de 10 digitos
+                //Campos requeridos
+
+
+                (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(ContactoActivity.this, "sendComments"));
+            }
+        });
+    }
+
+    private class PushToServerHelper extends AsyncTask<String, Void, String>{
+        private final ProgressDialog dialog = new ProgressDialog(ContactoActivity.this);
+
+        @Override
+        protected void onPostExecute(String message) {
+            super.onPostExecute(message);
+            dialog.dismiss();
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.setMessage(getString(R.string.dialog_message));
+            dialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String result = "";
+
+            try{
+
+                URL url = new URL(params[0]);
+
+                HttpURLConnection cnn = (HttpURLConnection) url.openConnection();
+                cnn.setRequestMethod("POST");
+                cnn.setDoOutput(true);
+                cnn.setRequestProperty("Content-Type", "application/json");
+
+                // cuerpo de la peticion
+                JSONObject datosContactoObj = new JSONObject();
+                datosContactoObj.put("Comentario", comentario.getText());
+
+                StringBuilder builder = new StringBuilder();
+                builder.append("Android - ");
+                builder.append(Build.VERSION.RELEASE.toString());
+
+                datosContactoObj.put("DispOrigen", builder.toString());
+                datosContactoObj.put("EmailContacto", email.getText());
+                datosContactoObj.put("Nombre", nombre.getText());
+                datosContactoObj.put("TelefonoContacto", telefono.getText());
+
+                JSONObject requestBody = new JSONObject();
+                requestBody.put("datosRegistro", datosContactoObj);
+
+                OutputStream output = cnn.getOutputStream();
+                output.write(requestBody.toString().getBytes("UTF-8"));
+
+                // {'datosRegistro':{'Comentario':'buena app', "DispOrigen": 'Android - 5.2' ... }}
+
+                // conectando
+                cnn.connect();
+                InputStream stream = cnn.getInputStream();
+                byte[] b = new byte[1024];
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+                while (stream.read(b) != -1)
+                    baos.write(b);
+                String responseJson = new String(baos.toByteArray());
+
+                JSONObject jsonObject = new JSONObject(responseJson);
+
+                result = jsonObject.getString("d");
+                //JSONObject storeInfoJson = jsonObject.getJSONObject("d");
+            }
+            catch (Throwable t){
+                t.printStackTrace();
+                return null;
+            }
+
+            return result;
+        }
+    }
+}
+
+
+

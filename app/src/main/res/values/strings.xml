@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CENCEL</string>
+
+    <color name="backgroundColor">#0E94E3</color>
+    <color name="cencelColor">#ec008c</color>
+
+    <string name="urlWSCencel">http://smartcen.net:6091/srv/SmartMobileControllerService.svc/</string>
+    <string name="getCencelStoresMethod">getCencelStores</string>
+    <string name="getCencelStoreMethod">getCencelStore</string>
+    <string name="dialog_message">Cargando...</string>
+    <string name="urlSitioCencel">http://www.cencel.com.mx</string>
+    <string name="store_location_text">Ver la ubicación</string>
+    <string name="mailMessage">Mensaje importante de uno de nuestros clientes.</string>
+    <string name="mailSubject">Mensaje Enviado desde la App de CENCEL</string>
+    <string name="mailMessageSendig">Enviando mensaje...</string>
+    <string name="headmng">headmng</string>
+    <string name="Ima">Ima</string>
+
+</resources>
