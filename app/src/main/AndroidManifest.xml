@@ -35,6 +35,7 @@
         <activity android:name=".activities.contacto.ContactoActivity">
         </activity>
 
+        <!-- comentario -->
 
 
         <activity android:name=".activities.empresas.menuempre.Localizacion_Emp_Act">
