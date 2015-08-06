@@ -56,12 +56,15 @@ public class MenuMainActivity extends Activity {
         // generando la vista
         setContentView(R.layout.menu_main);
 
+
+
         VideoView videoView = (VideoView) findViewById(R.id.surface_view);
         Uri path = Uri.parse("android.resource://mx.com.cencel.comercial.cencel/" + R.raw.cencemenu);
 
         videoView.setVideoURI(path);
 
         videoView.start();
+
 
         // rellenando
         MenuListAdapter adapter = new MenuListAdapter(this, menuItemNames, menuImages, menuItemsDescriptions);
@@ -77,7 +80,7 @@ public class MenuMainActivity extends Activity {
 
                 // pantallas consecuentes
                 Intent nextActivity = new Intent();
-                switch (position){
+                switch (position) {
                     case 0:
                         //Promociones
                         break;
@@ -117,5 +120,23 @@ public class MenuMainActivity extends Activity {
 
             }
         });
+
+
     }
+
+
+
+    protected void onResume() {
+        super.onResume();
+
+        VideoView videoView = (VideoView) findViewById(R.id.surface_view);
+        Uri path = Uri.parse("android.resource://mx.com.cencel.comercial.cencel/" + R.raw.cencemenu);
+
+        videoView.setVideoURI(path);
+
+        videoView.start();
+    }
+
+
+
 }
