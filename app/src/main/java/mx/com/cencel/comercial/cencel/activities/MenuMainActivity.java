@@ -2,10 +2,12 @@ package mx.com.cencel.comercial.cencel.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.VideoView;
 
 import mx.com.cencel.comercial.cencel.R;
 import mx.com.cencel.comercial.cencel.activities.constramite.Qrlector;
@@ -54,6 +56,13 @@ public class MenuMainActivity extends Activity {
         // generando la vista
         setContentView(R.layout.menu_main);
 
+        VideoView videoView = (VideoView) findViewById(R.id.surface_view);
+        Uri path = Uri.parse("android.resource://mx.com.cencel.comercial.cencel/" + R.raw.cencemenu);
+
+        videoView.setVideoURI(path);
+
+        videoView.start();
+
         // rellenando
         MenuListAdapter adapter = new MenuListAdapter(this, menuItemNames, menuImages, menuItemsDescriptions);
         list = (ListView) findViewById(R.id.menu_list);
@@ -75,31 +84,37 @@ public class MenuMainActivity extends Activity {
                     case 1:
                         // Sucursales
                         nextActivity = new Intent(getApplicationContext(), StoresListActivity.class);
+
                         break;
 
                     case 2:
                         //Consulta Tramite
                         nextActivity = new Intent(getApplicationContext(), Qrlector.class);
+
                         break;
 
                     case 3:
                         //Contacto
                         nextActivity = new Intent(getApplicationContext(), ContactoActivity.class);
 
+
                         break;
 
                     case 4:
                         //Empresas
                         nextActivity = new Intent(getApplicationContext(), EmpresaActivity.class);
+
                         break;
 
                     case 5:
                         // Visitanos
                         nextActivity = new Intent(getApplicationContext(), CencelSiteWebActivity.class);
+
                         break;
                 }
 
                 startActivity(nextActivity);
+
             }
         });
     }

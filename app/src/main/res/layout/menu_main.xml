@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MenuMainActivity">
 
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="220dp"
-        android:id="@+id/imageView2"
-        android:layout_gravity="center_horizontal"
-
-        android:background="@drawable/bannr_sucursales" />
+    <VideoView
+        android:id="@+id/surface_view"
+        android:layout_width="320px"
+        android:layout_height="240px"
+        android:layout_above="@+id/scan_button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:backgroundTint="#ffffc9e0" />
 
 
 
@@ -20,7 +25,7 @@
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageView2" />
+        android:layout_below="@+id/surface_view" />
 
     <LinearLayout
         android:orientation="vertical"

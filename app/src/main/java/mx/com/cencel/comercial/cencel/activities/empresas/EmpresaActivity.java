@@ -142,9 +142,8 @@ public class EmpresaActivity extends Activity {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
 
             Intent intent = new Intent(EmpresaActivity.this, EmpresaActivity.class);
-            finish();
             startActivity(intent);
-
+            finish();
         }
 
 
@@ -178,4 +177,5 @@ public class EmpresaActivity extends Activity {
     mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ "contacto@cencel.com.mx" });
     startActivity(Intent.createChooser(mailIntent, getString(R.string.mailMessageSendig)));
     }
+
 }
