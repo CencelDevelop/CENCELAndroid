@@ -59,7 +59,8 @@
         android:shadowRadius="5"
         android:layout_x="95dp"
         android:layout_y="369dp"
-        android:gravity="center_vertical|right" />
+        android:gravity="center_vertical|right"
+        android:onClick="correo" />
 
     <TextView
         android:layout_width="wrap_content"

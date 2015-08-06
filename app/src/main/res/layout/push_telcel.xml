@@ -60,7 +60,8 @@
         android:layout_x="100dp"
         android:layout_y="384dp"
         android:textStyle="bold"
-        android:gravity="center_vertical|right" />
+        android:gravity="center_vertical|right"
+        android:onClick="correo" />
 
     <TextView
         android:layout_width="wrap_content"

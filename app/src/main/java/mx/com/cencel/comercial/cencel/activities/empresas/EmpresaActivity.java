@@ -170,7 +170,12 @@ public class EmpresaActivity extends Activity {
         }
     }
 
-
-
-
+    public void correo(View view){
+    Intent mailIntent = new Intent(Intent.ACTION_SEND);
+    mailIntent.setType("text/plain");
+    mailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mailSubject));
+    mailIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.mailMessage));
+    mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ "contacto@cencel.com.mx" });
+    startActivity(Intent.createChooser(mailIntent, getString(R.string.mailMessageSendig)));
+    }
 }
