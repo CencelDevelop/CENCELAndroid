@@ -1,9 +1,11 @@
 package mx.com.cencel.comercial.cencel.activities.empresas;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +25,7 @@ import mx.com.cencel.comercial.cencel.menuList.MenuListAdapter;
  * Created by vcid on 03/08/15.
  */
 public class EmpresaActivity extends Activity {
-
+    public Intent callIntent;
     ListView list;
 
     String[] menuItemNames = {
@@ -158,11 +160,13 @@ public class EmpresaActivity extends Activity {
 
 
 
-    public void llamar(String tel){
-        try{
-            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" +44459999)));
-        }catch(Exception e){
-            e.printStackTrace();
+    public void llamar(View view){
+        try {
+            callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:44459999"));
+            startActivity(callIntent);
+        } catch (ActivityNotFoundException activityException) {
+            Log.e("dialing-example", "Call failed", activityException);
         }
     }
 
