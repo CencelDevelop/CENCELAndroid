@@ -9,6 +9,7 @@
     <string name="getCencelStoreMethod">getCencelStore</string>
     <string name="getEstatusDataMethod">ObtieneEstatusData</string>
     <string name="dialog_message">Cargando...</string>
+    <string name="dialog_aceptar">Aceptar</string>
     <string name="urlSitioCencel">http://www.cencel.com.mx</string>
     <string name="store_location_text">Ver la ubicación</string>
     <string name="mailMessage">Mensaje importante de uno de nuestros clientes.</string>
@@ -16,6 +17,7 @@
     <string name="mailMessageSendig">Enviando mensaje...</string>
     <string name="headmng">headmng</string>
     <string name="Ima">Ima</string>
+
 
     <string name="not_number_message">Lo siento. el valor no es numérico.</string>
     <string name="error_tramite">Lo siento. hubo un error en la consulta.</string>

@@ -1,5 +1,6 @@
 package mx.com.cencel.comercial.cencel.activities.constramite;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -25,6 +26,7 @@ import mx.com.cencel.comercial.cencel.activities.constramite.IntentIntegrator;
 import mx.com.cencel.comercial.cencel.activities.constramite.IntentResult;
 import mx.com.cencel.comercial.cencel.pojo.ResultadoTramite;
 import mx.com.cencel.comercial.cencel.util.CencelUtils;
+import mx.com.cencel.comercial.cencel.util.CustomDialog;
 
 
 public class Qrlector extends ActionBarActivity implements View.OnClickListener {
@@ -34,7 +36,7 @@ public class Qrlector extends ActionBarActivity implements View.OnClickListener 
     public static String folioData = "";
 
     @Override
-    protected void onCreate (Bundle savedInateceState)
+    protected void onCreate(Bundle savedInateceState)
 
     {
         super.onCreate(savedInateceState);
@@ -48,11 +50,11 @@ public class Qrlector extends ActionBarActivity implements View.OnClickListener 
         videoView.start();
 
         //Se Instancia el botón de Scan
-        scanBtn = (Button)findViewById(R.id.scan_button);
+        scanBtn = (Button) findViewById(R.id.scan_button);
         //Se Instancia el Campo de Texto para el nombre del formato de código de barra
-        formatTxt = (TextView)findViewById(R.id.scan_format);
+        formatTxt = (TextView) findViewById(R.id.scan_format);
         //Se Instancia el Campo de Texto para el contenido  del código de barra
-        contentTxt = (TextView)findViewById(R.id.scan_content);
+        contentTxt = (TextView) findViewById(R.id.scan_content);
         //Se agrega la clase MainActivity.java como Listener del evento click del botón de Scan
         scanBtn.setOnClickListener(this);
     }
@@ -60,7 +62,7 @@ public class Qrlector extends ActionBarActivity implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         //Se responde al evento click
-        if(view.getId()==R.id.scan_button){
+        if (view.getId() == R.id.scan_button) {
             //Se instancia un objeto de la clase IntentIntegrator
             IntentIntegrator scanIntegrator = new IntentIntegrator(this);
             //Se procede con el proceso de scaneo
@@ -76,12 +78,12 @@ public class Qrlector extends ActionBarActivity implements View.OnClickListener 
             //Se trabaja con la peticion en el servidor
             this.folioData = scanningResult.getContents();
 
-            if (CencelUtils.isNumeric(this.folioData)){
-                (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(Qrlector.this ,getString(R.string.getEstatusDataMethod)));
-            }else {
+            if (CencelUtils.isNumeric(this.folioData)) {
+                (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(Qrlector.this, getString(R.string.getEstatusDataMethod)));
+            } else {
                 Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.not_number_message), Toast.LENGTH_SHORT).show();
             }
-        }else{
+        } else {
             //Quiere decir que NO se obtuvo resultado
             Toast toast = Toast.makeText(getApplicationContext(),
                     "No se ha recibido datos del scaneo!", Toast.LENGTH_SHORT);
@@ -100,42 +102,36 @@ public class Qrlector extends ActionBarActivity implements View.OnClickListener 
             //Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 
             // tratamiento del objeto si existe
-            if (result.getFolio() != -1){
+            if (result.getFolio() != -1) {
                 int stringRes = 0;
 
                 // if else if !!!
-                if (result.getEstatusData().equalsIgnoreCase("COMPLETADO") && result.getEstatusTELCEL().equalsIgnoreCase("ACEPTADO")){
+                if (result.getEstatusData().equalsIgnoreCase("COMPLETADO") && result.getEstatusTELCEL().equalsIgnoreCase("ACEPTADO")) {
                     stringRes = R.string.consulta_tramie_aceptado;
-                } else if (result.getEstatusData().equalsIgnoreCase("COMPLETADO") && result.getEstatusTELCEL().equalsIgnoreCase("RECHAZADO")){
+                } else if (result.getEstatusData().equalsIgnoreCase("COMPLETADO") && result.getEstatusTELCEL().equalsIgnoreCase("RECHAZADO")) {
                     stringRes = R.string.consulta_tramite_rechazado;
-                }
-                else if (result.getEstatusData().equalsIgnoreCase("COMPLETADO") && result.getEstatusTELCEL().equalsIgnoreCase("PENDIENTE")){
+                } else if (result.getEstatusData().equalsIgnoreCase("COMPLETADO") && result.getEstatusTELCEL().equalsIgnoreCase("PENDIENTE")) {
                     stringRes = R.string.consulta_tramite_pendiente;
-                }
-                else if (result.getEstatusData().equalsIgnoreCase("PENDIENTE") && result.getEstatusTELCEL().equalsIgnoreCase("PENDIENTE")){
+                } else if (result.getEstatusData().equalsIgnoreCase("PENDIENTE") && result.getEstatusTELCEL().equalsIgnoreCase("PENDIENTE")) {
                     stringRes = R.string.consulta_tramite_pendiente;
-                }
-                else if (result.getEstatusData().equalsIgnoreCase("EN PROCESO")){
+                } else if (result.getEstatusData().equalsIgnoreCase("EN PROCESO")) {
                     stringRes = R.string.consulta_tramite_proceso;
-                }
-                else if (result.getEstatusData().equalsIgnoreCase("EN PREVALIDACION")){
+                } else if (result.getEstatusData().equalsIgnoreCase("EN PREVALIDACION")) {
                     stringRes = R.string.consulta_tramite_preval;
-                }
-                else if (result.getEstatusData().equalsIgnoreCase("ALMACEN")){
+                } else if (result.getEstatusData().equalsIgnoreCase("ALMACEN")) {
                     stringRes = R.string.consulta_tramite_almacen;
-                }
-                else if (result.getEstatusData().equalsIgnoreCase("NO DISPONIBLE")){
+                } else if (result.getEstatusData().equalsIgnoreCase("NO DISPONIBLE")) {
                     stringRes = R.string.consulta_tramite_no_disponible;
-                }
-                else if (result.getEstatusData().equalsIgnoreCase("TRANSITO LOCAL")){
+                } else if (result.getEstatusData().equalsIgnoreCase("TRANSITO LOCAL")) {
                     stringRes = R.string.consulta_tramite_transito;
-                }
-                else if (result.getEstatusData().equalsIgnoreCase("TRANSITO FORANEO")){
+                } else if (result.getEstatusData().equalsIgnoreCase("TRANSITO FORANEO")) {
                     stringRes = R.string.consulta_tramite_transito;
                 }
 
-                Toast.makeText(getApplicationContext(), getString(stringRes), Toast.LENGTH_SHORT).show();
-            }else{
+                // Toast.makeText(getApplicationContext(), getString(stringRes), Toast.LENGTH_SHORT).show();
+                Dialog resultDialog = (new CustomDialog()).getDialog(Qrlector.this, getString(R.string.app_name), getString(stringRes));
+                resultDialog.show();
+            } else {
                 Toast.makeText(getApplicationContext(), R.string.error_tramite, Toast.LENGTH_SHORT).show();
             }
         }
