@@ -30,99 +30,74 @@
 
 
             android:layout_width="match_parent"
-
             android:layout_height="match_parent"
-
             android:layout_margin="5dp"
-
-            android:padding="5dp" >
+            android:padding="5dp">
 
 
             <EditText
 
                 android:id="@+id/Email"
-
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
-
                 android:layout_alignParentLeft="true"
-
                 android:layout_alignParentTop="true"
-
                 android:layout_margin="5dp"
-
                 android:hint="Escribe Tu Email"
-
                 android:inputType="textEmailAddress"
-
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textColorHint="#ffff84e4"
+                android:backgroundTint="#ffff86e7" />
 
             <EditText
 
                 android:id="@+id/Nombre"
-
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
-
                 android:layout_below="@id/Email"
-
                 android:layout_margin="5dp"
-
                 android:hint="Ingresa Tu Nombre"
-
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textColorHint="#ffff84e4"
+                android:backgroundTint="#ffff86e7" />
 
             <EditText
 
                 android:id="@+id/Telefono"
-
+                android:numeric="integer"
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
-
                 android:layout_below="@id/Nombre"
-
                 android:layout_margin="5dp"
-
+                android:maxLength="10"
                 android:hint="Ingresa Tu Telefono"
-
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:phoneNumber="true"
+                android:textColorHint="#ffff84e4"
+                android:backgroundTint="#ffff86e7" />
 
 
             <EditText
 
                 android:id="@+id/Comentario"
-
                 android:layout_width="match_parent"
-
                 android:layout_height="200dp"
-
                 android:layout_below="@id/Telefono"
-
                 android:layout_margin="5dp"
-
                 android:gravity="top|left"
-
                 android:hint="Escribe Tu Comentario"
-
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:textColorHint="#ffff84e4"
+                android:backgroundTint="#ffff86e7" />
 
 
 
             <Button
-
                 android:id="@+id/enviar"
-
                 android:layout_width="80dp"
-
                 android:layout_height="50dp"
-
                 android:layout_below="@id/Comentario"
-
                 android:layout_margin="5dp"
-
                 android:text="Enviar" />
 
 

@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import mx.com.cencel.comercial.cencel.R;
+import mx.com.cencel.comercial.cencel.activities.constramite.Qrlector;
 import mx.com.cencel.comercial.cencel.activities.empresas.EmpresaActivity;
 import mx.com.cencel.comercial.cencel.activities.stores.StoresListActivity;
 import mx.com.cencel.comercial.cencel.activities.contacto.ContactoActivity;
@@ -78,6 +79,7 @@ public class MenuMainActivity extends Activity {
 
                     case 2:
                         //Consulta Tramite
+                        nextActivity = new Intent(getApplicationContext(), Qrlector.class);
                         break;
 
                     case 3:

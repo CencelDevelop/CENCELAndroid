@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import android.widget.Button;
@@ -21,6 +22,10 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import android.app.AlertDialog;
 
 import mx.com.cencel.comercial.cencel.R;
 
@@ -35,10 +40,10 @@ import mx.com.cencel.comercial.cencel.util.CencelUtils;
  */
 public class ContactoActivity extends Activity {
     public EditText email;
-    private EditText nombre;
-    private EditText telefono;
-    private EditText comentario;
-    private Button Enviar;
+    public EditText nombre;
+    public EditText telefono;
+    public EditText comentario;
+    public Button Enviar;
 
 
     private StoreArrayAdapter adapter;
@@ -55,20 +60,72 @@ public class ContactoActivity extends Activity {
         comentario = (EditText)findViewById(R.id.Comentario);
         Enviar = (Button)findViewById(R.id.enviar);
 
-        Enviar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // cuando se hace click en el boton
-
-                // validaciones de datos de entrada
-                //que sea correo
-                //numero de 10 digitos
-                //Campos requeridos
 
 
-                (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(ContactoActivity.this, "sendComments"));
-            }
-        });
+
+
+
+            Enviar.setOnClickListener(new View.OnClickListener() {
+
+
+                @Override
+                public void onClick(View v) {
+                    // cuando se hace click en el boton
+
+                    // validaciones de datos de entrada
+                    //que sea correo
+                    //numero de 10 digitos
+                    //Campos requeridos
+
+
+                    //  Enviar.setEnabled(true);
+                    String em= email.getText().toString();
+                    String nb= nombre.getText().toString();
+                    String tel= telefono.getText().toString();
+                    String com= comentario.getText().toString();
+
+
+                    if (em.equals("") || nb.equals("") || tel.equals("") || com.equals("")) {
+                        Toast toast1 = Toast.makeText(getApplicationContext(), "Llene los campos faltantes", Toast.LENGTH_SHORT);
+                        toast1.show();
+                       // Enviar.setEnabled(false);
+
+
+                    }
+                    else{
+
+
+
+                        String getText=email.getText().toString();
+                        String Expn =
+                                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                                        +"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                                        +"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                                        +"([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
+
+                        if (getText.matches(Expn) && getText.length() > 0)
+                        {
+                            //Toast toast2 = Toast.makeText(getApplicationContext(), "Email correcto", Toast.LENGTH_SHORT);
+                            //toast2.show();
+                            Toast toast1 = Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_SHORT);
+                            toast1.show();
+                          (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(ContactoActivity.this, "sendComments"));
+
+
+                        }
+                        else
+                        {
+                            Toast toast2 = Toast.makeText(getApplicationContext(), "Email incorrecto", Toast.LENGTH_SHORT);
+                            toast2.show();
+                        }
+
+
+
+            }}
+            });
+
     }
 
     private class PushToServerHelper extends AsyncTask<String, Void, String>{
@@ -91,62 +148,65 @@ public class ContactoActivity extends Activity {
 
         @Override
         protected String doInBackground(String... params) {
-            String result = "";
 
-            try{
 
-                URL url = new URL(params[0]);
 
-                HttpURLConnection cnn = (HttpURLConnection) url.openConnection();
-                cnn.setRequestMethod("POST");
-                cnn.setDoOutput(true);
-                cnn.setRequestProperty("Content-Type", "application/json");
+                String result = "";
 
-                // cuerpo de la peticion
-                JSONObject datosContactoObj = new JSONObject();
-                datosContactoObj.put("Comentario", comentario.getText());
+                try {
 
-                StringBuilder builder = new StringBuilder();
-                builder.append("Android - ");
-                builder.append(Build.VERSION.RELEASE.toString());
+                    URL url = new URL(params[0]);
 
-                datosContactoObj.put("DispOrigen", builder.toString());
-                datosContactoObj.put("EmailContacto", email.getText());
-                datosContactoObj.put("Nombre", nombre.getText());
-                datosContactoObj.put("TelefonoContacto", telefono.getText());
+                    HttpURLConnection cnn = (HttpURLConnection) url.openConnection();
+                    cnn.setRequestMethod("POST");
+                    cnn.setDoOutput(true);
+                    cnn.setRequestProperty("Content-Type", "application/json");
 
-                JSONObject requestBody = new JSONObject();
-                requestBody.put("datosRegistro", datosContactoObj);
+                    // cuerpo de la peticion
+                    JSONObject datosContactoObj = new JSONObject();
+                    datosContactoObj.put("Comentario", comentario.getText());
 
-                OutputStream output = cnn.getOutputStream();
-                output.write(requestBody.toString().getBytes("UTF-8"));
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("Android - ");
+                    builder.append(Build.VERSION.RELEASE.toString());
 
-                // {'datosRegistro':{'Comentario':'buena app', "DispOrigen": 'Android - 5.2' ... }}
+                    datosContactoObj.put("DispOrigen", builder.toString());
+                    datosContactoObj.put("EmailContacto", email.getText());
+                    datosContactoObj.put("Nombre", nombre.getText());
+                    datosContactoObj.put("TelefonoContacto", telefono.getText());
 
-                // conectando
-                cnn.connect();
-                InputStream stream = cnn.getInputStream();
-                byte[] b = new byte[1024];
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    JSONObject requestBody = new JSONObject();
+                    requestBody.put("datosRegistro", datosContactoObj);
 
-                while (stream.read(b) != -1)
-                    baos.write(b);
-                String responseJson = new String(baos.toByteArray());
+                    OutputStream output = cnn.getOutputStream();
+                    output.write(requestBody.toString().getBytes("UTF-8"));
 
-                JSONObject jsonObject = new JSONObject(responseJson);
+                    // {'datosRegistro':{'Comentario':'buena app', "DispOrigen": 'Android - 5.2' ... }}
 
-                result = jsonObject.getString("d");
-                //JSONObject storeInfoJson = jsonObject.getJSONObject("d");
+                    // conectando
+                    cnn.connect();
+                    InputStream stream = cnn.getInputStream();
+                    byte[] b = new byte[1024];
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+                    while (stream.read(b) != -1)
+                        baos.write(b);
+                    String responseJson = new String(baos.toByteArray());
+
+                    JSONObject jsonObject = new JSONObject(responseJson);
+
+                    result = jsonObject.getString("d");
+                    //JSONObject storeInfoJson = jsonObject.getJSONObject("d");
+                } catch (Throwable t) {
+                    t.printStackTrace();
+                    return null;
+                }
+
+                return result;
             }
-            catch (Throwable t){
-                t.printStackTrace();
-                return null;
-            }
-
-            return result;
         }
     }
-}
+
 
 
 

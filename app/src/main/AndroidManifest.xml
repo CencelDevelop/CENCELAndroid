@@ -35,24 +35,9 @@
         <activity android:name=".activities.contacto.ContactoActivity">
         </activity>
 
-        <!-- comentario -->
 
-
-        <activity android:name=".activities.empresas.menuempre.Localizacion_Emp_Act">
+        <activity android:name=".activities.constramite.Qrlector">
         </activity>
-        <activity android:name=".activities.empresas.menuempre.Email_Corto_Act">
-        </activity>
-        <activity android:name=".activities.empresas.menuempre.Localizacion_Veh_Act">
-        </activity>
-        <activity android:name=".activities.empresas.menuempre.M2m_Act">
-        </activity>
-        <activity android:name=".activities.empresas.menuempre.Mensajeria_Emp_Act">
-        </activity>
-        <activity android:name=".activities.empresas.menuempre.Push_Telcel">
-        </activity>
-        <activity android:name=".activities.empresas.menuempre.Recuerda_Sms_Act">
-        </activity>
-
 
     </application>
 

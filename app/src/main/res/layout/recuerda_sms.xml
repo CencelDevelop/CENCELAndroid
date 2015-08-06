@@ -1,13 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<AbsoluteLayout
+    android:id="@+id/widget0"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/fondoemp">
+
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="220dp"
-        android:id="@+id/imageView2"
-        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:id="@+id/psht"
+        android:layout_x="28dp"
+        android:layout_y="24dp"
+        android:background="@drawable/recuerdasms_01" />
+    <ImageView
+        android:layout_width="71dp"
+        android:layout_height="63dp"
+        android:id="@+id/imageView"
+        android:layout_x="20dp"
+        android:layout_y="299dp"
+        android:background="@drawable/phone_cell" />
 
-        android:background="@drawable/empresas" />
+    <ImageView
+        android:layout_width="71dp"
+        android:layout_height="63dp"
+        android:id="@+id/imageView4"
+        android:layout_x="17dp"
+        android:layout_y="392dp"
+        android:background="@drawable/mail_cell" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/btotel"
+        android:text="44459999"
+        android:textColor="#ff0b0c0c"
+        android:textSize="16sp"
+        android:layout_width="206dp"
+        android:layout_height="60dp"
+        android:background="@drawable/bto1"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_x="98dp"
+        android:layout_y="304dp"
+        android:gravity="center_vertical|right"
+        android:onClick="llamar" />
+    <Button
+        android:id="@+id/btoemail"
+        android:text="contacto@cencel.com.mx"
+        android:textColor="#ff0b0c0c"
+        android:textSize="12sp"
+        android:layout_width="208dp"
+        android:layout_height="60dp"
+        android:background="@drawable/bto1"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_x="98dp"
+        android:layout_y="390dp"
+        android:gravity="center_vertical|right" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comunicate con nosotros"
+        android:id="@+id/textView"
+        android:layout_x="44dp"
+        android:layout_y="256dp"
+        android:textSize="22dp"
+        android:textColor="#ffff8ec4" />
+</AbsoluteLayout>
