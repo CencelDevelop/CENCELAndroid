@@ -106,7 +106,7 @@
                 android:id="@+id/call"
                 android:layout_below="@id/enviar"
                 android:background="@drawable/ictel"
-                />
+                android:onClick="llamar" />
 
 
         </RelativeLayout>

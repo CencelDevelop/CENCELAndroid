@@ -45,7 +45,7 @@ public class MenuMainActivity extends Activity {
             R.drawable.menuconsultatramite,
             R.drawable.menucontacto,
             R.drawable.menuempresas,
-            0
+            R.drawable.web
     };
 
     // se ejecuta siempre al generar una nueva actividad

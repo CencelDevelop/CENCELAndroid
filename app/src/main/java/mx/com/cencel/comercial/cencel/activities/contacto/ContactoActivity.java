@@ -3,10 +3,14 @@ package mx.com.cencel.comercial.cencel.activities.contacto;
 import android.app.Activity;
 
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import android.widget.Button;
@@ -39,6 +43,7 @@ import mx.com.cencel.comercial.cencel.util.CencelUtils;
  * Created by vcid on 03/08/15.
  */
 public class ContactoActivity extends Activity {
+    public Intent callIntent;
     public EditText email;
     public EditText nombre;
     public EditText telefono;
@@ -198,6 +203,17 @@ public class ContactoActivity extends Activity {
             }
 
             return result;
+        }
+    }
+
+
+    public void llamar(View view){
+        try {
+            callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:44459999"));
+            startActivity(callIntent);
+        } catch (ActivityNotFoundException activityException) {
+            Log.e("dialing-example", "Call failed", activityException);
         }
     }
 }
