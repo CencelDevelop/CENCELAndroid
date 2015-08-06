@@ -23,6 +23,7 @@ package mx.com.cencel.comercial.cencel.activities.constramite;
  */
 public final class IntentResult {
 
+
     private final String contents;
     private final String formatName;
     private final byte[] rawBytes;
