@@ -7,6 +7,7 @@
     <string name="urlWSCencel">http://smartcen.net:6091/srv/SmartMobileControllerService.svc/</string>
     <string name="getCencelStoresMethod">getCencelStores</string>
     <string name="getCencelStoreMethod">getCencelStore</string>
+    <string name="getEstatusDataMethod">ObtieneEstatusData</string>
     <string name="dialog_message">Cargando...</string>
     <string name="urlSitioCencel">http://www.cencel.com.mx</string>
     <string name="store_location_text">Ver la ubicación</string>
@@ -15,5 +16,19 @@
     <string name="mailMessageSendig">Enviando mensaje...</string>
     <string name="headmng">headmng</string>
     <string name="Ima">Ima</string>
+
+    <string name="not_number_message">Lo siento. el valor no es numérico.</string>
+    <string name="error_tramite">Lo siento. hubo un error en la consulta.</string>
+    
+    
+    <string name="consulta_tramie_aceptado">Felicidades.\n El trámite ha quedado aceptado.\n pasa a tu sucursal por tu equipo.</string>
+    <string name="consulta_tramite_rechazado">Malas noticias.\n El trámite ha sido rechazado.\n acude a tu sucusal a verificar.</string>
+    <string name="consulta_tramite_pendiente">Ten paciencia.\n El trámite sigue pendiente por parte de TELCEL.</string>
+    <string name="consulta_tramite_proceso">Ten paciencia.\n El trámite llego al área de activaciones.</string>
+    <string name="consulta_tramite_preval">Ten paciencia.\n Se están corroborando los datos que has ingresado.</string>
+    <string name="consulta_tramite_almacen">Ten paciencia.\n El equipo que sueñas esta siendo asignado.</string>
+    <string name="consulta_tramite_no_disponible">Ten paciencia.\n El equipo que sueñas esta en proceso de compra.</string>
+    <string name="consulta_tramite_transito">Ten paciencia.\n Estamos esperando a que llegue tu equipo.</string>
+
 
 </resources>

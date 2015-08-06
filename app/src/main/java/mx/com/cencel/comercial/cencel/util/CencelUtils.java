@@ -13,4 +13,17 @@ public class CencelUtils {
         builder.append(method);
         return builder.toString();
     }
+
+    public static boolean isNumeric(String str)
+    {
+        try
+        {
+            int d = Integer.parseInt(str);
+        }
+        catch(NumberFormatException nfe)
+        {
+            return false;
+        }
+        return true;
+    }
 }

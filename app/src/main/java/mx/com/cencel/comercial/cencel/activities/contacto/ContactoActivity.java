@@ -60,71 +60,66 @@ public class ContactoActivity extends Activity {
         comentario = (EditText)findViewById(R.id.Comentario);
         Enviar = (Button)findViewById(R.id.enviar);
 
+        Enviar.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+                // cuando se hace click en el boton
+
+                // validaciones de datos de entrada
+                //que sea correo
+                //numero de 10 digitos
+                //Campos requeridos
+
+
+                //  Enviar.setEnabled(true);
+                String em= email.getText().toString();
+                String nb= nombre.getText().toString();
+                String tel= telefono.getText().toString();
+                String com= comentario.getText().toString();
+
+
+                if (em.equals("") || nb.equals("") || tel.equals("") || com.equals("")) {
+                    Toast toast1 = Toast.makeText(getApplicationContext(), "Llene los campos faltantes", Toast.LENGTH_SHORT);
+                    toast1.show();
+                    // Enviar.setEnabled(false);
+
+
+                }
+                else{
 
 
 
+                    String getText=email.getText().toString();
+                    String Expn =
+                            "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                                    +"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                                    +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                                    +"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                                    +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                                    +"([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
 
-
-            Enviar.setOnClickListener(new View.OnClickListener() {
-
-
-                @Override
-                public void onClick(View v) {
-                    // cuando se hace click en el boton
-
-                    // validaciones de datos de entrada
-                    //que sea correo
-                    //numero de 10 digitos
-                    //Campos requeridos
-
-
-                    //  Enviar.setEnabled(true);
-                    String em= email.getText().toString();
-                    String nb= nombre.getText().toString();
-                    String tel= telefono.getText().toString();
-                    String com= comentario.getText().toString();
-
-
-                    if (em.equals("") || nb.equals("") || tel.equals("") || com.equals("")) {
-                        Toast toast1 = Toast.makeText(getApplicationContext(), "Llene los campos faltantes", Toast.LENGTH_SHORT);
+                    if (getText.matches(Expn) && getText.length() > 0)
+                    {
+                        //Toast toast2 = Toast.makeText(getApplicationContext(), "Email correcto", Toast.LENGTH_SHORT);
+                        //toast2.show();
+                        Toast toast1 = Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_SHORT);
                         toast1.show();
-                       // Enviar.setEnabled(false);
+                        (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(ContactoActivity.this, "sendComments"));
 
 
                     }
-                    else{
+                    else
+                    {
+                        Toast toast2 = Toast.makeText(getApplicationContext(), "Email incorrecto", Toast.LENGTH_SHORT);
+                        toast2.show();
+                    }
 
 
 
-                        String getText=email.getText().toString();
-                        String Expn =
-                                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
-                                        +"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
-                                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
-                                        +"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
-                                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
-                                        +"([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
-
-                        if (getText.matches(Expn) && getText.length() > 0)
-                        {
-                            //Toast toast2 = Toast.makeText(getApplicationContext(), "Email correcto", Toast.LENGTH_SHORT);
-                            //toast2.show();
-                            Toast toast1 = Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_SHORT);
-                            toast1.show();
-                          (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(ContactoActivity.this, "sendComments"));
-
-
-                        }
-                        else
-                        {
-                            Toast toast2 = Toast.makeText(getApplicationContext(), "Email incorrecto", Toast.LENGTH_SHORT);
-                            toast2.show();
-                        }
-
-
-
-            }}
-            });
+                }}
+        });
 
     }
 
@@ -151,61 +146,61 @@ public class ContactoActivity extends Activity {
 
 
 
-                String result = "";
+            String result = "";
 
-                try {
+            try {
 
-                    URL url = new URL(params[0]);
+                URL url = new URL(params[0]);
 
-                    HttpURLConnection cnn = (HttpURLConnection) url.openConnection();
-                    cnn.setRequestMethod("POST");
-                    cnn.setDoOutput(true);
-                    cnn.setRequestProperty("Content-Type", "application/json");
+                HttpURLConnection cnn = (HttpURLConnection) url.openConnection();
+                cnn.setRequestMethod("POST");
+                cnn.setDoOutput(true);
+                cnn.setRequestProperty("Content-Type", "application/json");
 
-                    // cuerpo de la peticion
-                    JSONObject datosContactoObj = new JSONObject();
-                    datosContactoObj.put("Comentario", comentario.getText());
+                // cuerpo de la peticion
+                JSONObject datosContactoObj = new JSONObject();
+                datosContactoObj.put("Comentario", comentario.getText());
 
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("Android - ");
-                    builder.append(Build.VERSION.RELEASE.toString());
+                StringBuilder builder = new StringBuilder();
+                builder.append("Android - ");
+                builder.append(Build.VERSION.RELEASE.toString());
 
-                    datosContactoObj.put("DispOrigen", builder.toString());
-                    datosContactoObj.put("EmailContacto", email.getText());
-                    datosContactoObj.put("Nombre", nombre.getText());
-                    datosContactoObj.put("TelefonoContacto", telefono.getText());
+                datosContactoObj.put("DispOrigen", builder.toString());
+                datosContactoObj.put("EmailContacto", email.getText());
+                datosContactoObj.put("Nombre", nombre.getText());
+                datosContactoObj.put("TelefonoContacto", telefono.getText());
 
-                    JSONObject requestBody = new JSONObject();
-                    requestBody.put("datosRegistro", datosContactoObj);
+                JSONObject requestBody = new JSONObject();
+                requestBody.put("datosRegistro", datosContactoObj);
 
-                    OutputStream output = cnn.getOutputStream();
-                    output.write(requestBody.toString().getBytes("UTF-8"));
+                OutputStream output = cnn.getOutputStream();
+                output.write(requestBody.toString().getBytes("UTF-8"));
 
-                    // {'datosRegistro':{'Comentario':'buena app', "DispOrigen": 'Android - 5.2' ... }}
+                // {'datosRegistro':{'Comentario':'buena app', "DispOrigen": 'Android - 5.2' ... }}
 
-                    // conectando
-                    cnn.connect();
-                    InputStream stream = cnn.getInputStream();
-                    byte[] b = new byte[1024];
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                // conectando
+                cnn.connect();
+                InputStream stream = cnn.getInputStream();
+                byte[] b = new byte[1024];
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-                    while (stream.read(b) != -1)
-                        baos.write(b);
-                    String responseJson = new String(baos.toByteArray());
+                while (stream.read(b) != -1)
+                    baos.write(b);
+                String responseJson = new String(baos.toByteArray());
 
-                    JSONObject jsonObject = new JSONObject(responseJson);
+                JSONObject jsonObject = new JSONObject(responseJson);
 
-                    result = jsonObject.getString("d");
-                    //JSONObject storeInfoJson = jsonObject.getJSONObject("d");
-                } catch (Throwable t) {
-                    t.printStackTrace();
-                    return null;
-                }
-
-                return result;
+                result = jsonObject.getString("d");
+                //JSONObject storeInfoJson = jsonObject.getJSONObject("d");
+            } catch (Throwable t) {
+                t.printStackTrace();
+                return null;
             }
+
+            return result;
         }
     }
+}
 
 
 
