@@ -24,17 +24,21 @@ public class Bienvenida extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.bienvenida);
-        mProgressBar=(ProgressBar) findViewById(R.id.progressbar);
-        linea_ayuda = (TextView) findViewById(R.id.linea_ayuda);
+        try{
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.bienvenida);
+            mProgressBar=(ProgressBar) findViewById(R.id.progressbar);
+            linea_ayuda = (TextView) findViewById(R.id.linea_ayuda);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        linea_ayuda.setText(getString(R.string.updating_db));
+       linea_ayuda.setText(getString(R.string.updating_db));
         cuentaAtras(3000);
 
 
