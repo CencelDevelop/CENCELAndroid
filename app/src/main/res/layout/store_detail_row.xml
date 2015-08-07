@@ -22,7 +22,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:padding="2dp" />
+            android:padding="2dp"
+            android:textColor="#ffff4197" />
         <TextView
             android:id="@+id/store_detail_location"
             android:layout_width="wrap_content"
@@ -31,7 +32,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:padding="2dp" android:visibility="invisible" />
+            android:padding="2dp" android:visibility="invisible"
+            android:textColor="#ffff4197" />
     </LinearLayout>
 
 </LinearLayout>
