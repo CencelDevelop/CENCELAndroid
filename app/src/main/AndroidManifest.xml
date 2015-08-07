@@ -16,27 +16,42 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
-        <activity android:name=".activities.MenuMainActivity">
+        <activity android:name=".activities.Bienvenida"
+            android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".activities.MenuMainActivity">
+            <intent-filter>
+                <action android:name=".activities.PANTALLA_PRINCIPAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
-        <activity android:name=".activities.CencelSiteWebActivity">
+        <activity android:name=".activities.CencelSiteWebActivity"
+            android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".activities.stores.StoresListActivity">
+        <activity android:name=".activities.stores.StoresListActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.stores.StoreDetailActivity">
+        <activity android:name=".activities.stores.StoreDetailActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.empresas.EmpresaActivity">
+        <activity android:name=".activities.empresas.EmpresaActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity android:name=".activities.contacto.ContactoActivity">
         </activity>
 
 
-        <activity android:name=".activities.constramite.Qrlector">
+        <activity android:name=".activities.constramite.Qrlector"
+            android:screenOrientation="portrait">
         </activity>
 
     </application>

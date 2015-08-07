@@ -17,6 +17,8 @@
     <string name="mailMessageSendig">Enviando mensaje...</string>
     <string name="headmng">headmng</string>
     <string name="Ima">Ima</string>
+    <string name="updating_db">Cargando..... </string>
+    <string name="db_ok">CENCEL</string>
 
 
     <string name="not_number_message">Lo siento. el valor no es numérico.</string>
