@@ -12,6 +12,7 @@ import android.widget.VideoView;
 import mx.com.cencel.comercial.cencel.R;
 import mx.com.cencel.comercial.cencel.activities.constramite.Qrlector;
 import mx.com.cencel.comercial.cencel.activities.empresas.EmpresaActivity;
+import mx.com.cencel.comercial.cencel.activities.promos.PromocionesActivity;
 import mx.com.cencel.comercial.cencel.activities.stores.StoresListActivity;
 import mx.com.cencel.comercial.cencel.activities.contacto.ContactoActivity;
 import mx.com.cencel.comercial.cencel.menuList.MenuListAdapter;
@@ -83,6 +84,8 @@ public class MenuMainActivity extends Activity {
                 switch (position) {
                     case 0:
                         //Promociones
+                        nextActivity = new Intent(getApplicationContext(), PromocionesActivity.class);
+
                         break;
                     case 1:
                         // Sucursales
