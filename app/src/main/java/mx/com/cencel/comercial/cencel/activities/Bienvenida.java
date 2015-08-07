@@ -38,7 +38,7 @@ public class Bienvenida extends Activity {
     protected void onResume() {
         super.onResume();
 
-       // linea_ayuda.setText(getString(R.string.updating_db));
+       linea_ayuda.setText(getString(R.string.updating_db));
         cuentaAtras(3000);
 
 
