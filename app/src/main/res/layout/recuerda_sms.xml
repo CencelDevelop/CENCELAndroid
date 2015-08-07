@@ -32,7 +32,7 @@
     <Button
         android:id="@+id/btotel"
         android:text="44459999"
-        android:textColor="#ff0b0c0c"
+        android:textColor="#ff131313"
         android:textSize="16sp"
         android:layout_width="206dp"
         android:layout_height="60dp"
