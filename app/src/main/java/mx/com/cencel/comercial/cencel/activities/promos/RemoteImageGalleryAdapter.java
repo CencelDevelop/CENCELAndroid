@@ -24,7 +24,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
-import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.Gallery.LayoutParams;
 import com.androidquery.AQuery;

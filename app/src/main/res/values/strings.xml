@@ -8,6 +8,7 @@
     <string name="urlPromosSmartcen">http://smartcen.net:6091/promos/</string>
     <string name="getCencelStoresMethod">getCencelStores</string>
     <string name="getCencelStoreMethod">getCencelStore</string>
+    <string name="getPromosMethod">getPromos</string>
     <string name="getEstatusDataMethod">ObtieneEstatusData</string>
     <string name="dialog_message">Cargando...</string>
     <string name="dialog_aceptar">Aceptar</string>
@@ -20,6 +21,7 @@
     <string name="Ima">Ima</string>
     <string name="updating_db">Cargando..... </string>
     <string name="db_ok">CENCEL</string>
+    <string name="msg_no_ads_found">No se encuentran elementos.</string>
 
 
     <string name="not_number_message">Lo siento. el valor no es numérico.</string>

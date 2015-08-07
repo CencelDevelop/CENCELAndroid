@@ -8,7 +8,16 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -16,6 +25,7 @@ import java.util.TimerTask;
 
 import mx.com.cencel.comercial.cencel.R;
 import mx.com.cencel.comercial.cencel.pojo.PromoSlideFotos;
+import mx.com.cencel.comercial.cencel.util.CencelUtils;
 import mx.com.cencel.comercial.cencel.widget.CustomGallery;
 
 /**
@@ -28,8 +38,9 @@ public class PromocionesActivity extends Activity {
     private List<PromoSlideFotos> promoSlideFotosList;
     private GetAdsAsyncTask getAdsAsyncTask;
     private Timer galleryTimer;
+
     @Override
-    public void onCreate(Bundle savedInstance){
+    public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         setContentView(R.layout.promos_slider);
 
@@ -51,7 +62,7 @@ public class PromocionesActivity extends Activity {
     }
 
     private void stopTimer() {
-        if(galleryTimer != null) {
+        if (galleryTimer != null) {
             galleryTimer.cancel();
         }
     }
@@ -59,7 +70,7 @@ public class PromocionesActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        if(isFinishing()) {
+        if (isFinishing()) {
             cancelTasks();
             stopTimer();
         }
@@ -71,15 +82,15 @@ public class PromocionesActivity extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction();
                 switch (action) {
-                    case (MotionEvent.ACTION_DOWN) :
+                    case (MotionEvent.ACTION_DOWN):
                         im.setImageDrawable(getResources().getDrawable(Sust));
                         break;
-                    case (MotionEvent.ACTION_UP) :
+                    case (MotionEvent.ACTION_UP):
                         im.setImageDrawable(getResources().getDrawable(Orig));
                         break;
-                    case (MotionEvent.ACTION_MOVE) :
+                    case (MotionEvent.ACTION_MOVE):
                         break;
-                    case (MotionEvent.ACTION_CANCEL) :
+                    case (MotionEvent.ACTION_CANCEL):
                         im.setImageDrawable(getResources().getDrawable(Orig));
                         break;
                 }
@@ -89,8 +100,8 @@ public class PromocionesActivity extends Activity {
     }
 
     private void cancelTasks() {
-        if(getAdsAsyncTask != null) {
-            if(!getAdsAsyncTask.isCancelled()) {
+        if (getAdsAsyncTask != null) {
+            if (!getAdsAsyncTask.isCancelled()) {
                 getAdsAsyncTask.cancel(true);
             }
         }
@@ -129,45 +140,65 @@ public class PromocionesActivity extends Activity {
 
         @Override
         protected List<PromoSlideFotos> doInBackground(Void... params) {
-          List<PromoSlideFotos> list = new ArrayList<PromoSlideFotos>();
-          /*  try {
-                return adDao.getAllAds();
-            } catch (DaoException e) {
-                Log.e(LOG_TAG, "Error al obtener ads: ", e);
-                generatedException = e;
-                return null;
-            }*/
+            List<PromoSlideFotos> list = new ArrayList<PromoSlideFotos>();
 
-            // conexion al servidor
-            return null;
+            try {
+
+                URL url = new URL(CencelUtils.buildUrlRequest(PromocionesActivity.this, getString(R.string.getPromosMethod)));
+
+                HttpURLConnection cnn = (HttpURLConnection) url.openConnection();
+                cnn.setRequestMethod("POST");
+                cnn.setDoOutput(true);
+                cnn.setRequestProperty("Content-Type", "application/json");
+
+                // conectando
+                cnn.connect();
+                InputStream stream = cnn.getInputStream();
+                byte[] b = new byte[1024];
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+                while (stream.read(b) != -1)
+                    baos.write(b);
+                String responseJson = new String(baos.toByteArray());
+
+                JSONObject jsonObject = new JSONObject(responseJson);
+                JSONArray promosArray = jsonObject.getJSONArray("d");
+
+                // iterar para generar nuevos objetos
+                for (int index = 0; index < promosArray.length(); index++) {
+                    JSONObject promoJson = promosArray.getJSONObject(index);
+                    PromoSlideFotos promo =
+                            new PromoSlideFotos(promoJson.getString("DescripcionPromo"), promoJson.getBoolean("Estatus"), promoJson.getString("FotoActual"), promoJson.getInt("IdRegistro"));
+                    list.add(promo);
+                }
+                return list;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                return null;
+            }
         }
 
         @Override
         protected void onPostExecute(List<PromoSlideFotos> result) {
             super.onPostExecute(result);
-            /*Log.d(LOG_TAG, "AdList: " + result);
-            if (generatedException != null) {
-                if (!AndroidUtil.isNetworkReachable(AdsActivity.this)) {
-                    Log.e(LOG_TAG, "Sin conexion...");
-                    Toast.makeText(AdsActivity.this, R.string.msg_network_unavailable, Toast.LENGTH_LONG).show();
-                } else {
-                    Log.e(LOG_TAG, "Servicio no disponible...");
-                    Toast.makeText(AdsActivity.this, R.string.msg_service_unavailable, Toast.LENGTH_LONG).show();
-                }
-                finish();
-            } else {
-                if(result != null) {
-                    if(!result.isEmpty()) {
-                        adList = result;
-                        customGallery.setAdapter(new BannerGalleryAdapter(AdsActivity.this, result, getResources().getDrawable(R.drawable.video_chico)));
+
+            try
+            {
+                if (result != null) {
+                    if (!result.isEmpty()) {
+                        promoSlideFotosList = result;
+                        customGallery.setAdapter(new BannerGalleryAdapter(PromocionesActivity.this, result, getDrawable(R.drawable.bannr_sucursales)));
                         startTimer();
                     } else {
-                        Toast.makeText(AdsActivity.this, R.string.msg_no_ads_found, Toast.LENGTH_LONG).show();
+                        Toast.makeText(PromocionesActivity.this, R.string.msg_no_ads_found, Toast.LENGTH_LONG).show();
                         finish();
                     }
                 }
+            }catch(Exception ex){
+                ex.printStackTrace();
+                finish();
             }
-            progressDialog.dismiss();*/
+            progressDialog.dismiss();
         }
 
         @Override
@@ -190,9 +221,9 @@ public class PromocionesActivity extends Activity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    if( customGallery.getSelectedItemPosition() == (customGallery.getCount() - 1) ) {
+                    if (customGallery.getSelectedItemPosition() == (customGallery.getCount() - 1)) {
                         customGallery.setSelection(0, true);
-                    } else if ( customGallery.getSelectedItemPosition() < (customGallery.getCount() - 1) ) {
+                    } else if (customGallery.getSelectedItemPosition() < (customGallery.getCount() - 1)) {
                         customGallery.setSelection(customGallery.getSelectedItemPosition() + 1, true);
                     }
                 }
@@ -200,7 +231,6 @@ public class PromocionesActivity extends Activity {
         }
 
     }
-
 
 
 }

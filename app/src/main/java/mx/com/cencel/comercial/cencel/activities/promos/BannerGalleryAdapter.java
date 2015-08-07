@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.Gallery.LayoutParams;
 
