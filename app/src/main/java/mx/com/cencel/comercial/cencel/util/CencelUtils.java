@@ -14,6 +14,13 @@ public class CencelUtils {
         return builder.toString();
     }
 
+    public static String buildUrlPhoto(Activity activity, String photoName){
+        StringBuilder builder = new StringBuilder();
+        builder.append(activity.getString(R.string.urlPromosSmartcen));
+        builder.append(photoName);
+        return builder.toString();
+    }
+
     public static boolean isNumeric(String str)
     {
         try
@@ -25,5 +32,52 @@ public class CencelUtils {
             return false;
         }
         return true;
+    }
+
+
+    /**
+     * Reemplaza los espacios repetidos consecutivos con uno solo
+     *
+     * @param str
+     * @return
+     */
+    public static String removeRepeatedSpaces(String str) {
+        try {
+            String result = str.trim();
+            while (result.contains("  ")) {
+                result = result.replaceAll("  ", " ");
+            }
+            return result;
+        } catch (RuntimeException e) {
+            return "";
+        }
+    }
+
+    /**
+     * Verifica si un String esta vacio
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isBlank(String str) {
+        if( str == null || "".equals(str.trim()) ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Null safe trim
+     *
+     * @param str
+     * @return
+     */
+    public static String trim(String str) {
+        if(str == null) {
+            return "";
+        } else {
+            return str.trim();
+        }
     }
 }
