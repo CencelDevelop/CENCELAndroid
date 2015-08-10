@@ -23,8 +23,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:padding="2dp"
-            android:textColor="#fff4f4f4"
-            android:background="@drawable/bto2"
+            android:textColor="#ff0f090e"
+
             android:gravity="center_vertical|right" />
         <TextView
             android:id="@+id/store_detail_location"
