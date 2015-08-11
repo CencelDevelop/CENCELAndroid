@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-
-    <ImageView
-        android:id="@+id/store_detail_icon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:padding="5dp"  />
-
-    <LinearLayout android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:id="@+id/store_row_root">
 
         <TextView
             android:id="@+id/store_detail_info"
@@ -20,23 +9,31 @@
             android:layout_height="wrap_content"
             android:text="location data"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
+            android:layout_marginLeft="100dp"
             android:padding="2dp"
             android:textColor="#ff0f090e"
+            android:gravity="center_horizontal" />
 
-            android:gravity="center_vertical|right" />
+        <TextView
+            android:id="@+id/store_detail_adicional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="location data"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="100dp"
+            android:padding="2dp"
+            android:visibility="invisible"
+            android:gravity="center_horizontal" />
+
         <TextView
             android:id="@+id/store_detail_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="location data"
-            android:textAppearance="@color/abc_primary_text_disable_only_material_dark"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
+            android:layout_marginLeft="100dp"
             android:padding="2dp"
-            android:visibility="invisible"
-            android:textColor="#ff0f090e" />
-    </LinearLayout>
-
+            android:visibility="invisible"/>
 </LinearLayout>
