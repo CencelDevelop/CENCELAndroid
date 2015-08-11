@@ -1,6 +1,8 @@
 package mx.com.cencel.comercial.cencel.util;
 
 import android.app.Activity;
+import android.util.TypedValue;
+import android.view.View;
 
 import mx.com.cencel.comercial.cencel.R;
 
@@ -79,5 +81,9 @@ public class CencelUtils {
         } else {
             return str.trim();
         }
+    }
+
+    public static int ConvertToDip(int metric, View view){
+      return  (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, metric, view.getResources().getDisplayMetrics());
     }
 }

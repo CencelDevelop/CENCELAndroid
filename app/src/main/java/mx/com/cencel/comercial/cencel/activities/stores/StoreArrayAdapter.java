@@ -1,17 +1,19 @@
 package mx.com.cencel.comercial.cencel.activities.stores;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import mx.com.cencel.comercial.cencel.R;
 import mx.com.cencel.comercial.cencel.pojo.StoreInformation;
+import mx.com.cencel.comercial.cencel.util.CencelUtils;
 
 /**
  * Created by iHouse on 01/08/15.
@@ -57,39 +59,82 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
         View rowView = inflater.inflate(R.layout.store_detail_row, null, true);
         StoreInformation store = itemList.get(position);
 
+        // obtener la celda
+        LinearLayout rootLayout = (LinearLayout)rowView.findViewById(R.id.store_row_root);
+
+        // obtener condenido de la celda
         TextView storeInfo = (TextView) rowView.findViewById(R.id.store_detail_info);
-        ImageView storeIcon = (ImageView) rowView.findViewById(R.id.store_detail_icon);
         TextView storeCoordinate = (TextView) rowView.findViewById(R.id.store_detail_location);
+        TextView adicionalText = (TextView) rowView.findViewById(R.id.store_detail_adicional);
 
         // pintar fila en base al indice del objeto para definir que pintar
         switch (store.getId()){
             case 0:
-                // pintar el nombre de la tienda
+                // pintar el nombre de la tienda y la direccion en un sola celda
+                rootLayout.setBackgroundResource(R.drawable.header_tienda);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, CencelUtils.ConvertToDip(250, rowView));
+                rootLayout.setLayoutParams(params);
+
+                LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(storeInfo.getLayoutParams().width, storeInfo.getLayoutParams().height);
+                params5.leftMargin = CencelUtils.ConvertToDip(35, rowView);
+                params5.topMargin = CencelUtils.ConvertToDip(10, rowView);
+
+                LinearLayout.LayoutParams params6 = new LinearLayout.LayoutParams(adicionalText.getLayoutParams().width, adicionalText.getLayoutParams().height);
+                params6.leftMargin = CencelUtils.ConvertToDip(15, rowView);
+                params6.topMargin = CencelUtils.ConvertToDip(40, rowView);
+
+                storeInfo.setLayoutParams(params5);
+                adicionalText.setLayoutParams(params6);
+
+                // tienda en tono blanco
                 storeInfo.setText(store.getStoreName());
-                storeIcon.setVisibility(View.GONE);
+                storeInfo.setTextColor(Color.parseColor("#FFFFFF"));
+
+                // direccion de la tienda
+                adicionalText.setTextColor(Color.parseColor("#FFFFFF"));
+                adicionalText.setText(store.getStoreAddress());
+                adicionalText.setVisibility(View.VISIBLE);
                 break;
             case 1:
-                // direccion de la tienda
-                storeInfo.setText(store.getStoreAddress());
-                storeIcon.setVisibility(View.GONE);
+                // telefono de la tienda
+                rootLayout.setBackgroundResource(R.drawable.llamanos_celda);
+                LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, CencelUtils.ConvertToDip(80, rowView));
+                rootLayout.setLayoutParams(params2);
+
+                LinearLayout.LayoutParams params7 = new LinearLayout.LayoutParams(adicionalText.getLayoutParams().width, adicionalText.getLayoutParams().height);
+                params7.leftMargin = CencelUtils.ConvertToDip(100, rowView);
+                params7.topMargin = CencelUtils.ConvertToDip(8, rowView);
+                adicionalText.setLayoutParams(params7);
+
+                adicionalText.setText(store.getStorePhone());
+                storeInfo.setText(R.string.llamanos);
+                adicionalText.setVisibility(View.VISIBLE);
                 break;
             case 2:
-                // telefono de la tienda
-                storeInfo.setText(store.getStorePhone());
-                storeIcon.setImageResource(R.drawable.phone_cell);
+                //correo de la tienda
+                rootLayout.setBackgroundResource(R.drawable.escribenos_celda);
+                LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, CencelUtils.ConvertToDip(80, rowView));
+                rootLayout.setLayoutParams(params3);
+
+                LinearLayout.LayoutParams params8 = new LinearLayout.LayoutParams(adicionalText.getLayoutParams().width, adicionalText.getLayoutParams().height);
+                params8.leftMargin = CencelUtils.ConvertToDip(100, rowView);
+                params8.topMargin = CencelUtils.ConvertToDip(8, rowView);
+                adicionalText.setLayoutParams(params8);
+
+                adicionalText.setText(store.getStoreEmail());
+                adicionalText.setVisibility(View.VISIBLE);
+                storeInfo.setText(R.string.escribenos);
                 break;
             case 3:
-                //correo de la tienda
-                storeInfo.setText(store.getStoreEmail());
-                storeIcon.setImageResource(R.drawable.mail_cell);
-                break;
-            case 4:
                 // coordenada para mapa
+                rootLayout.setBackgroundResource(R.drawable.mapa_celda);
+                LinearLayout.LayoutParams params4 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, CencelUtils.ConvertToDip(80, rowView));
+                rootLayout.setLayoutParams(params4);
                 storeCoordinate.setText(store.getStoreCoordinate());
                 storeInfo.setText(getContext().getString(R.string.store_location_text));
-                storeIcon.setImageResource(R.drawable.location_cell);
                 break;
         }
+
 
         return rowView;
     }

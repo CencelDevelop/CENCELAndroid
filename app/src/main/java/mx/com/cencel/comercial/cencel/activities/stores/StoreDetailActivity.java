@@ -60,18 +60,17 @@ public class StoreDetailActivity extends Activity {
                     switch (position){
                         // en base al indice seleccionado, hace algo
                         case 0:
+                            // nombre y direccion de la tienda
+                            nextActivity = new Intent(getApplicationContext(), MapStore.class);
+                            nextActivity.putExtra("cordenada", item.getStoreCoordinate());
                             break;
                         case 1:
-                            // direccion, hacer lo mismo en mapas
-
-                            break;
-                        case 2:
                             // llamar telefono
                             Intent callIntent = new Intent(Intent.ACTION_CALL);
                             callIntent.setData(Uri.parse("tel:" + item.getStorePhone().toString()));
                             startActivity(callIntent);
                             break;
-                        case 3:
+                        case 2:
                             // enviar correo
                             Intent mailIntent = new Intent(Intent.ACTION_SEND);
                             mailIntent.setType("text/plain");
@@ -80,12 +79,11 @@ public class StoreDetailActivity extends Activity {
                             mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ item.getStoreEmail().toString() });
                             startActivity(Intent.createChooser(mailIntent, getString(R.string.mailMessageSendig)));
                             break;
-                        case 4:
+                        case 3:
                             // correr mapa
                             nextActivity = new Intent(getApplicationContext(), MapStore.class);
                             nextActivity.putExtra("cordenada", item.getStoreCoordinate());
                             break;
-
                     }
 
                     startActivity(nextActivity);
@@ -147,7 +145,7 @@ public class StoreDetailActivity extends Activity {
                 JSONObject jsonObject = new JSONObject(responseJson);
                 JSONObject storeInfoJson = jsonObject.getJSONObject("d");
 
-                for (int index=0;index<5;index++){
+                for (int index=0;index<4;index++){
                     // hacer 5 veces el mismo objeto jaja
                     result.add(new StoreInformation(index,StoreDetailActivity.storeSelected.getName(), storeInfoJson.getString("domicilio"), storeInfoJson.getString("telefono"), storeInfoJson.getString("email"), storeInfoJson.getString("coordinate")));
                 }
