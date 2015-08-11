@@ -56,12 +56,14 @@ public class StoreDetailActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try{
                     StoreInformation item = adapter.getItem(position);
+                   Intent nextActivity = new Intent();
                     switch (position){
                         // en base al indice seleccionado, hace algo
                         case 0:
                             break;
                         case 1:
                             // direccion, hacer lo mismo en mapas
+
                             break;
                         case 2:
                             // llamar telefono
@@ -80,9 +82,13 @@ public class StoreDetailActivity extends Activity {
                             break;
                         case 4:
                             // correr mapa
+                            nextActivity = new Intent(getApplicationContext(), MapStore.class);
+                            nextActivity.putExtra("cordenada", item.getStoreCoordinate());
                             break;
 
                     }
+
+                    startActivity(nextActivity);
                 }catch(Exception ex){
                     Toast.makeText(getApplicationContext(), "Error: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }

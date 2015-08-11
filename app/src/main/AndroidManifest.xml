@@ -43,6 +43,9 @@
         <activity android:name=".activities.stores.StoreDetailActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".activities.stores.MapStore"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".activities.empresas.EmpresaActivity"
             android:screenOrientation="portrait">
         </activity>
