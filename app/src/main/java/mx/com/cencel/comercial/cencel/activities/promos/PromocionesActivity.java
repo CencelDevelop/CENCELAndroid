@@ -15,7 +15,6 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -187,7 +186,7 @@ public class PromocionesActivity extends Activity {
                 if (result != null) {
                     if (!result.isEmpty()) {
                         promoSlideFotosList = result;
-                        customGallery.setAdapter(new BannerGalleryAdapter(PromocionesActivity.this, result, getDrawable(R.drawable.bannr_sucursales)));
+                        customGallery.setAdapter(new BannerGalleryAdapter(PromocionesActivity.this, result, null));
                         startTimer();
                     } else {
                         Toast.makeText(PromocionesActivity.this, R.string.msg_no_ads_found, Toast.LENGTH_LONG).show();
