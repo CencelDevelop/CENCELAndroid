@@ -22,7 +22,8 @@
     <string name="updating_db">Cargando..... </string>
     <string name="db_ok">CENCEL</string>
     <string name="msg_no_ads_found">No se encuentran elementos.</string>
-
+<string name="llamanos">Llámanos</string>
+    <string name="escribenos">Escríbenos</string>
 
     <string name="not_number_message">Lo siento. el valor no es numérico.</string>
     <string name="error_tramite">Lo siento. hubo un error en la consulta.</string>
