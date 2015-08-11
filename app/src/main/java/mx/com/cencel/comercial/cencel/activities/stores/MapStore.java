@@ -33,9 +33,10 @@ public class MapStore extends ActionBarActivity {
         StringBuilder builder = new StringBuilder();
         builder.append("https://www.google.com/maps/?t=k&q=");
         builder.append(var);
-        //builder.append(",12z");
+       // builder.append(",202m/data=!3m1!1e3");
 
-
+      //  https://www.google.com/maps/?t=k&q=19.5503988,-99.2735528
+      // http://maps.google.com/maps?z=11&t=k&q=19.5503988,-99.2735528
         webview.loadUrl(builder.toString());
     }
 

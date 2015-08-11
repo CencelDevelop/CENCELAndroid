@@ -72,7 +72,7 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
             case 0:
                 // pintar el nombre de la tienda y la direccion en un sola celda
                 rootLayout.setBackgroundResource(R.drawable.header_tienda);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, CencelUtils.ConvertToDip(250, rowView));
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(250, rowView));
                 rootLayout.setLayoutParams(params);
 
                 LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(storeInfo.getLayoutParams().width, storeInfo.getLayoutParams().height);
@@ -98,7 +98,7 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
             case 1:
                 // telefono de la tienda
                 rootLayout.setBackgroundResource(R.drawable.llamanos_celda);
-                LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, CencelUtils.ConvertToDip(80, rowView));
+                LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(80, rowView));
                 rootLayout.setLayoutParams(params2);
 
                 LinearLayout.LayoutParams params7 = new LinearLayout.LayoutParams(adicionalText.getLayoutParams().width, adicionalText.getLayoutParams().height);
@@ -113,7 +113,7 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
             case 2:
                 //correo de la tienda
                 rootLayout.setBackgroundResource(R.drawable.escribenos_celda);
-                LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, CencelUtils.ConvertToDip(80, rowView));
+                LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(80, rowView));
                 rootLayout.setLayoutParams(params3);
 
                 LinearLayout.LayoutParams params8 = new LinearLayout.LayoutParams(adicionalText.getLayoutParams().width, adicionalText.getLayoutParams().height);
@@ -128,7 +128,7 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
             case 3:
                 // coordenada para mapa
                 rootLayout.setBackgroundResource(R.drawable.mapa_celda);
-                LinearLayout.LayoutParams params4 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, CencelUtils.ConvertToDip(80, rowView));
+                LinearLayout.LayoutParams params4 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(80, rowView));
                 rootLayout.setLayoutParams(params4);
                 storeCoordinate.setText(store.getStoreCoordinate());
                 storeInfo.setText(getContext().getString(R.string.store_location_text));

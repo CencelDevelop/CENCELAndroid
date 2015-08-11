@@ -7,70 +7,54 @@
     android:background="@drawable/fondoemp">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="338dp"
+        android:layout_height="270dp"
         android:id="@+id/psht"
         android:layout_x="27dp"
-        android:layout_y="32dp"
+        android:layout_y="34dp"
         android:background="@drawable/emailcorto_01" />
-
-    <ImageView
-        android:layout_width="71dp"
-        android:layout_height="63dp"
-        android:id="@+id/imageView"
-        android:layout_x="20dp"
-        android:layout_y="299dp"
-        android:background="@drawable/phone_cell" />
-
-    <ImageView
-        android:layout_width="71dp"
-        android:layout_height="63dp"
-        android:id="@+id/imageView4"
-        android:layout_x="20dp"
-        android:layout_y="374dp"
-        android:background="@drawable/mail_cell" />
 
     <Button
         android:id="@+id/btotel"
         android:text="44459999"
         android:textColor="#ff0b0c0c"
         android:textSize="16sp"
-        android:layout_width="206dp"
+        android:layout_width="295dp"
         android:layout_height="60dp"
-        android:background="@drawable/bto1"
+        android:background="@drawable/llamanos_celda"
         android:shadowColor="#A8A8A8"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:layout_x="98dp"
-        android:layout_y="304dp"
+        android:layout_x="47dp"
+        android:layout_y="348dp"
+        android:onClick="llamar"
         android:gravity="center_vertical|right"
-        android:onClick="llamar" />
+        />
     <Button
         android:id="@+id/btoemail"
         android:text="contacto@cencel.com.mx"
         android:textColor="#ff0b0c0c"
         android:textSize="12sp"
-        android:layout_width="208dp"
+        android:layout_width="290dp"
         android:layout_height="60dp"
-        android:background="@drawable/bto1"
+        android:background="@drawable/escribenos_celda"
         android:shadowColor="#A8A8A8"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:layout_x="95dp"
-        android:layout_y="369dp"
-        android:gravity="center_vertical|right"
-        android:onClick="correo" />
+        android:layout_x="51dp"
+        android:layout_y="423dp"
+        android:onClick="correo"
+        android:gravity="center_vertical|right" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Comunicate con nosotros"
         android:id="@+id/textView"
-        android:layout_x="44dp"
-        android:layout_y="256dp"
+        android:layout_x="79dp"
+        android:layout_y="310dp"
         android:textSize="22dp"
-        android:textColor="#ffff8ec4" />
-
+        android:textColor="#ff0e0e0e" />
 </AbsoluteLayout>
