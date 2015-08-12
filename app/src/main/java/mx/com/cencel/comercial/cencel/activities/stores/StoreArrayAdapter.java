@@ -72,7 +72,7 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
         switch (store.getId()) {
             case 0:
                 // pintar el nombre de la tienda y la direccion en un sola celda
-                rootLayout.setBackgroundResource(R.drawable.header_tienda);
+                rootLayout.setBackgroundResource(R.drawable.header_store);
 
                 AbsListView.LayoutParams params = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(250, rowView));
                 rootLayout.setLayoutParams(params);
