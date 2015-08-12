@@ -35,7 +35,7 @@
             android:layout_height="43dp"
             android:id="@+id/imageButton"
             android:layout_gravity="right"
-            android:background="@drawable/menu"
+            android:background="@drawable/home"
             android:onClick="menu" />
     </LinearLayout>
 

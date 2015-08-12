@@ -64,6 +64,7 @@ public class StoreDetailActivity extends Activity {
                                 // nombre y direccion de la tienda
                                 nextActivity = new Intent(getApplicationContext(), MapStore.class);
                                 nextActivity.putExtra("cordenada", item.getStoreCoordinate());
+                                startActivity(nextActivity);
                                 break;
                             case 1:
                                 // llamar telefono
@@ -84,10 +85,11 @@ public class StoreDetailActivity extends Activity {
                                 // correr mapa
                                 nextActivity = new Intent(getApplicationContext(), MapStore.class);
                                 nextActivity.putExtra("cordenada", item.getStoreCoordinate());
+                                startActivity(nextActivity);
                                 break;
                         }
 
-                        startActivity(nextActivity);
+
                     }catch(Exception ex){
                         Toast.makeText(getApplicationContext(), "Error: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
                     }

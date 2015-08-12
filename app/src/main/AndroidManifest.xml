@@ -57,7 +57,7 @@
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".activities.promos.PromocionesActivity" android:screenOrientation="landscape">
+        <activity android:name=".activities.promos.PromocionesActivity" android:screenOrientation="portrait">
 
         </activity>
 

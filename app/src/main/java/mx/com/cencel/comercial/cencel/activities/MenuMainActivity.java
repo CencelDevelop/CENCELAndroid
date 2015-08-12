@@ -59,12 +59,6 @@ public class MenuMainActivity extends Activity {
 
 
 
-        VideoView videoView = (VideoView) findViewById(R.id.surface_view);
-        Uri path = Uri.parse("android.resource://mx.com.cencel.comercial.cencel/" + R.raw.cencemenu);
-
-        videoView.setVideoURI(path);
-
-        videoView.start();
 
 
         // rellenando
@@ -128,17 +122,6 @@ public class MenuMainActivity extends Activity {
     }
 
 
-
-    protected void onResume() {
-        super.onResume();
-
-        VideoView videoView = (VideoView) findViewById(R.id.surface_view);
-        Uri path = Uri.parse("android.resource://mx.com.cencel.comercial.cencel/" + R.raw.cencemenu);
-
-        videoView.setVideoURI(path);
-
-        videoView.start();
-    }
 
 
 

@@ -2,8 +2,8 @@
     <string name="app_name">CENCEL</string>
 
     <color name="backgroundColor">#0E94E3</color>
-    <color name="cencelColor">#ec008c</color>
-
+    <color name="cencelColor">#ff0f090e</color>
+    <color name="cencelColor2">#FF6EC3FF</color>
     <string name="urlWSCencel">http://smartcen.net:6091/srv/SmartMobileControllerService.svc/</string>
     <string name="urlPromosSmartcen">http://smartcen.net:6091/promos/</string>
     <string name="getCencelStoresMethod">getCencelStores</string>

@@ -8,10 +8,33 @@
         android:layout_height="150dp"
         android:id="@+id/imageView3"
         android:contentDescription="@string/headmng"
-        android:background="@drawable/emp"
+        android:background="@drawable/header_contacto"
 
         android:singleLine="true"
          />
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:id="@+id/enviar"
+        android:background="@drawable/enviar"
+        android:onClick="llamar"
+       />
+
+    <ImageButton
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:id="@+id/call"
+        android:background="@drawable/ictel"
+        android:onClick="llamar"
+        android:layout_x="342dp"
+        android:layout_y="2dp"
+        android:layout_marginLeft="230dp" />
+
+</LinearLayout>
 
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -21,7 +44,7 @@
         android:layout_height="match_parent"
         android:padding="5dp"
 
-        tools:context=".MainActivity" >
+        tools:context=".MainActivity">
 
 
 
@@ -45,8 +68,8 @@
                 android:hint="Escribe Tu Email"
                 android:inputType="textEmailAddress"
                 android:singleLine="true"
-                android:textColorHint="#ffff84e4"
-                android:backgroundTint="#ffff86e7" />
+                android:textColorHint="@color/cencelColor"
+                android:backgroundTint="@color/cencelColor2" />
 
             <EditText
 
@@ -57,8 +80,8 @@
                 android:layout_margin="5dp"
                 android:hint="Ingresa Tu Nombre"
                 android:singleLine="true"
-                android:textColorHint="#ffff84e4"
-                android:backgroundTint="#ffff86e7" />
+                android:textColorHint="@color/cencelColor"
+                android:backgroundTint="@color/cencelColor2" />
 
             <EditText
 
@@ -72,8 +95,8 @@
                 android:hint="Ingresa Tu Telefono"
                 android:singleLine="true"
                 android:phoneNumber="true"
-                android:textColorHint="#ffff84e4"
-                android:backgroundTint="#ffff86e7" />
+                android:textColorHint="@color/cencelColor"
+                android:backgroundTint="@color/cencelColor2" />
 
 
             <EditText
@@ -86,31 +109,13 @@
                 android:gravity="top|left"
                 android:hint="Escribe Tu Comentario"
                 android:inputType="textMultiLine"
-                android:textColorHint="#ffff84e4"
-                android:backgroundTint="#ffff86e7" />
-
-
-
-            <Button
-                android:id="@+id/enviar"
-                android:layout_width="80dp"
-                android:layout_height="50dp"
-                android:layout_below="@id/Comentario"
-                android:layout_margin="5dp"
-                android:text="Enviar" />
-
-
-            <ImageButton
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:id="@+id/call"
-                android:layout_below="@id/enviar"
-                android:background="@drawable/ictel"
-                android:onClick="llamar" />
+                android:textColorHint="@color/cencelColor"
+                android:backgroundTint="@color/cencelColor2" />
 
 
         </RelativeLayout>
 
     </ScrollView>
+
 
 </LinearLayout>
