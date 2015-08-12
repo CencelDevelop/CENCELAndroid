@@ -32,25 +32,29 @@ public class StoresListActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        try{
+            setContentView(R.layout.stores_main);
+            sucursalesList = (ListView) findViewById(R.id.stores_list);
 
-        setContentView(R.layout.stores_main);
-        sucursalesList = (ListView) findViewById(R.id.stores_list);
+            // en asincrono obtener los datos del server y pintar la tabla
+            adapter = new StoresArrayAdapter(this, new ArrayList<StoreSimple>());
+            sucursalesList.setAdapter(adapter);
+            (new AsyncListViewLoader()).execute(CencelUtils.buildUrlRequest(this, getString(R.string.getCencelStoresMethod)));
 
-        // en asincrono obtener los datos del server y pintar la tabla
-        adapter = new StoresArrayAdapter(this, new ArrayList<StoreSimple>());
-        sucursalesList.setAdapter(adapter);
-        (new AsyncListViewLoader()).execute(CencelUtils.buildUrlRequest(this, getString(R.string.getCencelStoresMethod)));
+            sucursalesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    // sucursal
+                    Intent nextActivity = new Intent(getApplicationContext(), StoreDetailActivity.class);
+                    nextActivity.putExtra("store_selected", adapter.getItem(position));
+                    // Toast.makeText(getApplicationContext(), adapter.getItem(position).getCode(), Toast.LENGTH_SHORT).show();
+                    startActivity(nextActivity);
+                }
+            });
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
 
-        sucursalesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // sucursal
-                Intent nextActivity = new Intent(getApplicationContext(), StoreDetailActivity.class);
-                nextActivity.putExtra("store_selected", adapter.getItem(position));
-               // Toast.makeText(getApplicationContext(), adapter.getItem(position).getCode(), Toast.LENGTH_SHORT).show();
-                startActivity(nextActivity);
-            }
-        });
     }
 
     // tarea asincrona

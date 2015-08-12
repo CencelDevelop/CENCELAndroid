@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,20 +23,20 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
     private final Activity context;
     private List<StoreInformation> itemList;
 
-    public StoreArrayAdapter(Activity context, List<StoreInformation> itemList){
+    public StoreArrayAdapter(Activity context, List<StoreInformation> itemList) {
         super(context, R.layout.store_detail_row, itemList);
         this.context = context;
         this.itemList = itemList;
     }
 
-    public int getCount(){
-        if(itemList != null)
+    public int getCount() {
+        if (itemList != null)
             return itemList.size();
         return 0;
     }
 
-    public StoreInformation getItem(int position){
-        if(itemList != null)
+    public StoreInformation getItem(int position) {
+        if (itemList != null)
             return itemList.get(position);
         return null;
     }
@@ -50,17 +51,17 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
         return itemList;
     }
 
-    public void setItemList(List<StoreInformation> itemList){
+    public void setItemList(List<StoreInformation> itemList) {
         this.itemList = itemList;
     }
 
-    public View getView(int position, View view, ViewGroup parent){
+    public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.store_detail_row, null, true);
         StoreInformation store = itemList.get(position);
 
         // obtener la celda
-        LinearLayout rootLayout = (LinearLayout)rowView.findViewById(R.id.store_row_root);
+        LinearLayout rootLayout = (LinearLayout) rowView.findViewById(R.id.store_row_root);
 
         // obtener condenido de la celda
         TextView storeInfo = (TextView) rowView.findViewById(R.id.store_detail_info);
@@ -68,11 +69,12 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
         TextView adicionalText = (TextView) rowView.findViewById(R.id.store_detail_adicional);
 
         // pintar fila en base al indice del objeto para definir que pintar
-        switch (store.getId()){
+        switch (store.getId()) {
             case 0:
                 // pintar el nombre de la tienda y la direccion en un sola celda
                 rootLayout.setBackgroundResource(R.drawable.header_tienda);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(250, rowView));
+
+                AbsListView.LayoutParams params = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(250, rowView));
                 rootLayout.setLayoutParams(params);
 
                 LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(storeInfo.getLayoutParams().width, storeInfo.getLayoutParams().height);
@@ -98,7 +100,7 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
             case 1:
                 // telefono de la tienda
                 rootLayout.setBackgroundResource(R.drawable.llamanos_celda);
-                LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(80, rowView));
+                AbsListView.LayoutParams params2 = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(80, rowView));
                 rootLayout.setLayoutParams(params2);
 
                 LinearLayout.LayoutParams params7 = new LinearLayout.LayoutParams(adicionalText.getLayoutParams().width, adicionalText.getLayoutParams().height);
@@ -113,7 +115,7 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
             case 2:
                 //correo de la tienda
                 rootLayout.setBackgroundResource(R.drawable.escribenos_celda);
-                LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(80, rowView));
+                AbsListView.LayoutParams params3 = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(80, rowView));
                 rootLayout.setLayoutParams(params3);
 
                 LinearLayout.LayoutParams params8 = new LinearLayout.LayoutParams(adicionalText.getLayoutParams().width, adicionalText.getLayoutParams().height);
@@ -128,7 +130,7 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
             case 3:
                 // coordenada para mapa
                 rootLayout.setBackgroundResource(R.drawable.mapa_celda);
-                LinearLayout.LayoutParams params4 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(80, rowView));
+                AbsListView.LayoutParams params4 = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CencelUtils.ConvertToDip(80, rowView));
                 rootLayout.setLayoutParams(params4);
                 storeCoordinate.setText(store.getStoreCoordinate());
                 storeInfo.setText(getContext().getString(R.string.store_location_text));
