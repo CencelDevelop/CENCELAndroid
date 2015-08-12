@@ -34,65 +34,69 @@ public class StoreDetailActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.store_detail_main);
+        try{
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.store_detail_main);
 
-        // obten la sucursal seleccionada de la actividad anterior
-        Bundle extras = getIntent().getExtras();
-        if(extras != null){
-            storeSelected = (StoreSimple) extras.get("store_selected");
-        }
-
-        storeInfoList = (ListView) findViewById(R.id.store_detail_list);
-        adapter = new StoreArrayAdapter(this, new ArrayList<StoreInformation>());
-        storeInfoList.setAdapter(adapter);
-
-        // background!!
-        (new AsyncListViewLoader()).execute(CencelUtils.buildUrlRequest(this, getString(R.string.getCencelStoreMethod)));
-
-        // click handler
-        storeInfoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                try{
-                    StoreInformation item = adapter.getItem(position);
-                   Intent nextActivity = new Intent();
-                    switch (position){
-                        // en base al indice seleccionado, hace algo
-                        case 0:
-                            // nombre y direccion de la tienda
-                            nextActivity = new Intent(getApplicationContext(), MapStore.class);
-                            nextActivity.putExtra("cordenada", item.getStoreCoordinate());
-                            break;
-                        case 1:
-                            // llamar telefono
-                            Intent callIntent = new Intent(Intent.ACTION_CALL);
-                            callIntent.setData(Uri.parse("tel:" + item.getStorePhone().toString()));
-                            startActivity(callIntent);
-                            break;
-                        case 2:
-                            // enviar correo
-                            Intent mailIntent = new Intent(Intent.ACTION_SEND);
-                            mailIntent.setType("text/plain");
-                            mailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mailSubject));
-                            mailIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.mailMessage));
-                            mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ item.getStoreEmail().toString() });
-                            startActivity(Intent.createChooser(mailIntent, getString(R.string.mailMessageSendig)));
-                            break;
-                        case 3:
-                            // correr mapa
-                            nextActivity = new Intent(getApplicationContext(), MapStore.class);
-                            nextActivity.putExtra("cordenada", item.getStoreCoordinate());
-                            break;
-                    }
-
-                    startActivity(nextActivity);
-                }catch(Exception ex){
-                    Toast.makeText(getApplicationContext(), "Error: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-                //Toast.makeText(getApplicationContext(), adapter.getItem(position).getStorePhone(), Toast.LENGTH_SHORT).show();
+            // obten la sucursal seleccionada de la actividad anterior
+            Bundle extras = getIntent().getExtras();
+            if(extras != null){
+                storeSelected = (StoreSimple) extras.get("store_selected");
             }
-        });
+
+            storeInfoList = (ListView) findViewById(R.id.store_detail_list);
+            adapter = new StoreArrayAdapter(this, new ArrayList<StoreInformation>());
+            storeInfoList.setAdapter(adapter);
+
+            // background!!
+            (new AsyncListViewLoader()).execute(CencelUtils.buildUrlRequest(this, getString(R.string.getCencelStoreMethod)));
+
+            // click handler
+            storeInfoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    try{
+                        StoreInformation item = adapter.getItem(position);
+                        Intent nextActivity = new Intent();
+                        switch (position){
+                            // en base al indice seleccionado, hace algo
+                            case 0:
+                                // nombre y direccion de la tienda
+                                nextActivity = new Intent(getApplicationContext(), MapStore.class);
+                                nextActivity.putExtra("cordenada", item.getStoreCoordinate());
+                                break;
+                            case 1:
+                                // llamar telefono
+                                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                                callIntent.setData(Uri.parse("tel:" + item.getStorePhone().toString()));
+                                startActivity(callIntent);
+                                break;
+                            case 2:
+                                // enviar correo
+                                Intent mailIntent = new Intent(Intent.ACTION_SEND);
+                                mailIntent.setType("text/plain");
+                                mailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mailSubject));
+                                mailIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.mailMessage));
+                                mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ item.getStoreEmail().toString() });
+                                startActivity(Intent.createChooser(mailIntent, getString(R.string.mailMessageSendig)));
+                                break;
+                            case 3:
+                                // correr mapa
+                                nextActivity = new Intent(getApplicationContext(), MapStore.class);
+                                nextActivity.putExtra("cordenada", item.getStoreCoordinate());
+                                break;
+                        }
+
+                        startActivity(nextActivity);
+                    }catch(Exception ex){
+                        Toast.makeText(getApplicationContext(), "Error: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                    //Toast.makeText(getApplicationContext(), adapter.getItem(position).getStorePhone(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
     }
 
     private class AsyncListViewLoader extends AsyncTask<String, Void, List<StoreInformation>> {
