@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CENCELAndroid.iml" filepath="$PROJECT_DIR$/CENCELAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CENCEL.iml" filepath="$PROJECT_DIR$/CENCEL.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-query-0.21.7/android-query-0.21.7.iml" filepath="$PROJECT_DIR$/android-query-0.21.7/android-query-0.21.7.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
