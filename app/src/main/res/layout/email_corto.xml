@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/fondoemp">
+>
 
     <ImageView
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
 
     <Button
         android:id="@+id/btotel"
-        android:text="44459999"
+        android:text="018000998000"
         android:textColor="#ff0b0c0c"
         android:textSize="16sp"
         android:layout_width="fill_parent"

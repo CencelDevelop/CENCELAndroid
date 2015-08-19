@@ -20,7 +20,8 @@
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageView2" />
+        android:layout_below="@+id/imageView2"
+        android:background="#400e0e0e"/>
 
     <LinearLayout
         android:orientation="vertical"

@@ -113,7 +113,11 @@ public class ContactoActivity extends Activity {
                         toast1.show();
                         (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(ContactoActivity.this, "sendComments"));
 
-
+                        email.setText("");
+                        nombre.setText("");
+                        telefono.setText("");
+                        comentario.setText("");
+                        Enviar.setText("");
                     }
                     else
                     {

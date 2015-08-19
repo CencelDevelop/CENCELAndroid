@@ -2,6 +2,7 @@ package mx.com.cencel.comercial.cencel.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -57,7 +58,12 @@ public class MenuMainActivity extends Activity {
         // generando la vista
         setContentView(R.layout.menu_main);
 
+        VideoView videoView = (VideoView) findViewById(R.id.surface_view);
+        Uri path = Uri.parse("android.resource://mx.com.cencel.comercial.cencel/" + R.raw.cencel);
 
+        videoView.setVideoURI(path);
+
+        videoView.start();
 
 
 
@@ -121,7 +127,19 @@ public class MenuMainActivity extends Activity {
 
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
 
+        VideoView videoView = (VideoView) findViewById(R.id.surface_view);
+        Uri path = Uri.parse("android.resource://mx.com.cencel.comercial.cencel/" + R.raw.cencel);
+
+        videoView.setVideoURI(path);
+
+        videoView.start();
+
+
+    }
 
 
 

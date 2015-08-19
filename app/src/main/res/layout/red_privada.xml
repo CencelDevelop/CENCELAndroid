@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+    android:id="@+id/widget0"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/psht"
+        android:layout_x="0dp"
+        android:layout_y="0dp"
+        android:background="@drawable/redprivada_01" />
+
+
+    <Button
+        android:id="@+id/btotel"
+        android:text="018000998000"
+        android:textColor="#ff0b0c0c"
+        android:textSize="16sp"
+        android:layout_width="fill_parent"
+        android:layout_height="78dp"
+        android:background="@drawable/llamanos_celda"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_x="4dp"
+        android:layout_y="311dp"
+        android:onClick="llamar"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingLeft="60dp"
+        android:paddingTop="14dp" />
+    <Button
+        android:id="@+id/btoemail"
+        android:text="contacto@cencel.com.mx"
+        android:textColor="#ff0b0c0c"
+        android:textSize="12sp"
+        android:layout_width="fill_parent"
+        android:layout_height="78dp"
+        android:background="@drawable/escribenos_celda"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_x="0dp"
+        android:layout_y="389dp"
+        android:onClick="correo"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingLeft="60dp"
+        android:paddingTop="15dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Llamanos"
+        android:background="@null"
+        android:id="@+id/button"
+        android:layout_x="156dp"
+        android:layout_y="317dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Escribenos"
+        android:background="@null"
+        android:id="@+id/button2"
+        android:layout_x="158dp"
+        android:layout_y="391dp" />
+
+</AbsoluteLayout>

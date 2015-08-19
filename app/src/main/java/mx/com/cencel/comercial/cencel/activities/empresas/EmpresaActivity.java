@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -20,6 +22,7 @@ import mx.com.cencel.comercial.cencel.R;
 import mx.com.cencel.comercial.cencel.activities.CencelSiteWebActivity;
 import mx.com.cencel.comercial.cencel.activities.MenuMainActivity;
 import mx.com.cencel.comercial.cencel.menuList.MenuListAdapter;
+import mx.com.cencel.comercial.cencel.util.CencelUtils;
 
 /**
  * Created by vcid on 03/08/15.
@@ -29,33 +32,37 @@ public class EmpresaActivity extends Activity {
     ListView list;
 
     String[] menuItemNames = {
-            "Email Corto",
-            "Localizacion Empresarial",
-            "Localizacion Vehicular",
-            "M2M",
-            "Mensajeria Empresarial",
-            "Push Telcel",
-            "Recuerda SMS Empresa"
+
+            "RED PRIVADA DE DATOS",
+            "RECUERDA SMS EMPRESAS",
+            "MENSAJERÍA EMPRESARIAL",
+            "E-MAIL CORTO EN TU TELCEL",
+            "PUSH TELCEL",
+            "LOCALIZACIÓN VEHICULAR TELCEL",
+            "LOCALIZACIÓN EMPRESARIAL TELCEL",
+            "M2M"
     };
 
     String[] menuItemsDescriptions ={
-            "E-mail corto en tu telcel",
-            "Conoce la ubicacion de tus empleados",
-            "Monitorear vehiculos particulareso utilitarios",
-            "Conexion entre dispositivos de tu empresa",
-            "Comunicacion real entre tus empleados",
-            "Comunicacion entre usuarios PUSH Telcel",
-            "Comunicacion personalizada entre operadores"
+            "conexiones privadas de datos",
+            "canal sencillo de comunicación personalizada",
+            "comunicación instantánea",
+            "recibir alertas (SMS)",
+            "comunicacion con otros usuarios PUSH ",
+            "permite monitorear vehículos particulares",
+            "Podras conocer la ubicación de tus empleados,",
+            "conexion entre si, en la empresa"
     };
 
     int[] menuImages = {
-            R.drawable.emailcorto,
-            R.drawable.localizacionempresarial,
-            R.drawable.localizacionvehicular,
-            R.drawable.m2m,
-            R.drawable.mensajeriaempresarial,
+            R.drawable.redpridatos,
+            R.drawable.recuersmsemp,
+            R.drawable.mensemp,
+            R.drawable.emailcort,
             R.drawable.pushtelcel,
-            R.drawable.recuerdasms
+            R.drawable.locavehitel,
+            R.drawable.locaemprtel,
+            R.drawable.m2m_02
     };
 
     // se ejecuta siempre al generar una nueva actividad
@@ -70,6 +77,10 @@ public class EmpresaActivity extends Activity {
         MenuListAdapter adapter = new MenuListAdapter(this, menuItemNames, menuImages, menuItemsDescriptions);
         list = (ListView) findViewById(R.id.menu_emp);
         list.setAdapter(adapter);
+
+        // obtener la celda
+
+
 
 
         // manejando el evento de tap o click
@@ -88,6 +99,8 @@ public class EmpresaActivity extends Activity {
                 switch (position) {
                     case 0:
                         //"Email Corto",
+
+
                         setContentView(R.layout.email_corto);
 
                         break;
@@ -120,6 +133,10 @@ public class EmpresaActivity extends Activity {
                     case 6:
                         // "Recuerda SMS Empresa"
                         setContentView(R.layout.recuerda_sms);
+                        break;
+                    case 7:
+                        // "Recuerda SMS Empresa"
+                        setContentView(R.layout.red_privada);
                         break;
 
                 }
@@ -162,7 +179,7 @@ public class EmpresaActivity extends Activity {
     public void llamar(View view){
         try {
             callIntent = new Intent(Intent.ACTION_CALL);
-            callIntent.setData(Uri.parse("tel:44459999"));
+            callIntent.setData(Uri.parse("tel:018000998000"));
             startActivity(callIntent);
         } catch (ActivityNotFoundException activityException) {
             Log.e("dialing-example", "Call failed", activityException);

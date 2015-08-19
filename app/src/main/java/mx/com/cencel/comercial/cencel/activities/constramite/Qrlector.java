@@ -192,4 +192,19 @@ public class Qrlector extends ActionBarActivity implements View.OnClickListener 
             return resultadoTramite;
         }
     }
+
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        VideoView videoView = (VideoView) findViewById(R.id.surface_view);
+        Uri path = Uri.parse("android.resource://mx.com.cencel.comercial.cencel/" + R.raw.cencel_cam);
+
+        videoView.setVideoURI(path);
+
+        videoView.start();
+
+
+    }
 }
