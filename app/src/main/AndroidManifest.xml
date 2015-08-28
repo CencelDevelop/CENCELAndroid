@@ -57,6 +57,10 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity android:name=".activities.micencel.MiCencel"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity android:name=".activities.promos.PromocionesActivity" android:screenOrientation="portrait">
 
         </activity>

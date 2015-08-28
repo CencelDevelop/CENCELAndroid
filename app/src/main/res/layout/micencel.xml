@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/miCencel">
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:orientation="vertical"
+        android:layout_x="1dp"
+        android:layout_y="3dp">
+        <ImageButton
+            android:id="@+id/heamc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/headermc" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/arealog"
+        android:layout_width="wrap_content"
+        android:layout_height="277dp"
+        android:orientation="vertical"
+        android:layout_x="33dp"
+        android:layout_y="199dp"
+        android:weightSum="1"
+        android:background="#fffeffff"
+        android:gravity="center_vertical"
+        android:paddingTop="5dp">
+        <LinearLayout
+            android:id="@+id/textos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="23dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/usuarios"
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:text="Usuario"
+                android:textSize="15dp" />
+            <EditText
+                android:id="@+id/txtusuario"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:text="Escribe aquí"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/contraseñas"
+                android:layout_width="wrap_content"
+                android:layout_height="-29dp"
+                android:text="Contraseña"
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/txtcontra"
+                android:layout_width="204dp"
+                android:layout_height="38dp"
+                android:text="Escribe aquí"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/zoboton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_x="24dp"
+            android:layout_y="375dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="30dp">
+            <ImageView
+                android:id="@+id/btoingresa"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:background="@drawable/ingresa" />
+            <TextView
+                android:id="@+id/registra"
+                android:layout_width="267dp"
+                android:layout_height="21dp"
+                android:text="¿No estas registrado?, Registrate Aquí" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/usr"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_x="127dp"
+        android:layout_y="165dp"
+        android:background="@drawable/usrmc" />
+    <RelativeLayout
+        android:id="@+id/piecon"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_x="0dp"
+        android:layout_y="483dp">
+        <ImageView
+            android:id="@+id/homemc"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/enviarmc"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentTop="false"
+            android:onClick="correo" />
+        <ImageView
+            android:id="@+id/llamamc"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ictelmc"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="llamar" />
+        <ImageView
+            android:id="@+id/visimc"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/webmc" />
+    </RelativeLayout>
+</AbsoluteLayout>

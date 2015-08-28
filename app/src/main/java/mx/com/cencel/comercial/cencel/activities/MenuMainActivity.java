@@ -13,6 +13,7 @@ import android.widget.VideoView;
 import mx.com.cencel.comercial.cencel.R;
 import mx.com.cencel.comercial.cencel.activities.constramite.Qrlector;
 import mx.com.cencel.comercial.cencel.activities.empresas.EmpresaActivity;
+import mx.com.cencel.comercial.cencel.activities.micencel.MiCencel;
 import mx.com.cencel.comercial.cencel.activities.promos.PromocionesActivity;
 import mx.com.cencel.comercial.cencel.activities.stores.StoresListActivity;
 import mx.com.cencel.comercial.cencel.activities.contacto.ContactoActivity;
@@ -29,7 +30,8 @@ public class MenuMainActivity extends Activity {
             "Consulta Tu Trámite",
             "Contacto",
             "Empresas",
-            "Visítanos"
+            "Visítanos",
+            "Recompensas"
     };
 
     String[] menuItemsDescriptions ={
@@ -38,7 +40,8 @@ public class MenuMainActivity extends Activity {
             "Consulta el estatus de tu trámite",
             "Envíanos tus datos",
             "Revisa las ofertas empresariales",
-            "Visita nuestro sitio web"
+            "Visita nuestro sitio web",
+            "Obten recompensas"
     };
 
     int[] menuImages = {
@@ -47,7 +50,8 @@ public class MenuMainActivity extends Activity {
             R.drawable.menuconsultatramite,
             R.drawable.menucontacto,
             R.drawable.menuempresas,
-            R.drawable.web
+            R.drawable.web,
+            0
     };
 
     // se ejecuta siempre al generar una nueva actividad
@@ -117,6 +121,14 @@ public class MenuMainActivity extends Activity {
                         nextActivity = new Intent(getApplicationContext(), CencelSiteWebActivity.class);
 
                         break;
+
+                    case 6:
+                        // Recompensas
+                        nextActivity = new Intent(getApplicationContext(), MiCencel.class);
+
+                        break;
+
+
                 }
 
                 startActivity(nextActivity);
