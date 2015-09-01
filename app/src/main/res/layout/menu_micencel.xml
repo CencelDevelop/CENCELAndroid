@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+    android:id="@+id/widget0"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <DigitalClock
+        android:id="@+id/widget34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="06:13 PM"
+        android:layout_x="243dp"
+        android:layout_y="5dp" />
+    <RelativeLayout
+        android:id="@+id/widget40"
+        android:layout_width="277dp"
+        android:layout_height="99dp"
+        android:layout_x="9dp"
+        android:layout_y="28dp">
+        <ImageView
+            android:id="@+id/widget32"
+            android:layout_width="92dp"
+            android:layout_height="85dp"
+            android:layout_alignBaseline="@+id/widget33"
+            android:layout_alignParentLeft="true" />
+        <TextView
+            android:id="@+id/widget33"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="Hola, Nombre Usuario"
+            android:textSize="18sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/widget41"
+        android:layout_width="275dp"
+        android:layout_height="35dp"
+        android:layout_x="11dp"
+        android:layout_y="146dp">
+        <TextView
+            android:id="@+id/widget38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saldo:_____"
+            android:layout_alignTop="@+id/widget39"
+            android:layout_alignParentLeft="true" />
+        <TextView
+            android:id="@+id/widget39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puntos:_____"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/widget42"
+        android:layout_width="267dp"
+        android:layout_height="151dp"
+        android:layout_x="18dp"
+        android:layout_y="202dp">
+        <GridView
+            android:id="@+id/widget45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numColumns="5"
+            android:columnWidth="20dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/widget49"
+        android:layout_width="260dp"
+        android:layout_height="44dp"
+        android:layout_x="22dp"
+        android:layout_y="377dp">
+        <Button
+            android:id="@+id/widget51"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Informacion"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/widget52" />
+        <Button
+            android:id="@+id/widget50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comparte"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+        <Button
+            android:id="@+id/widget52"
+            android:layout_width="83dp"
+            android:layout_height="wrap_content"
+            android:text="Acerca de"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</AbsoluteLayout>
