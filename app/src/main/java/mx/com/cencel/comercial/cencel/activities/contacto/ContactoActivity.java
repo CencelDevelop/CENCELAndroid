@@ -113,11 +113,7 @@ public class ContactoActivity extends Activity {
                         toast1.show();
                         (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(ContactoActivity.this, "sendComments"));
 
-                        email.setText("");
-                        nombre.setText("");
-                        telefono.setText("");
-                        comentario.setText("");
-                        Enviar.setText("");
+
                     }
                     else
                     {
@@ -141,6 +137,11 @@ public class ContactoActivity extends Activity {
             dialog.dismiss();
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 
+            email.setText("");
+            nombre.setText("");
+            telefono.setText("");
+            comentario.setText("");
+            Enviar.setText("");
         }
 
         @Override

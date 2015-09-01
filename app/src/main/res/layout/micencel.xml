@@ -15,16 +15,16 @@
             android:id="@+id/heamc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/headermc" />
+            android:background="@drawable/headeg" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/arealog"
         android:layout_width="wrap_content"
-        android:layout_height="277dp"
+        android:layout_height="297dp"
         android:orientation="vertical"
-        android:layout_x="33dp"
-        android:layout_y="199dp"
+        android:layout_x="31dp"
+        android:layout_y="176dp"
         android:weightSum="1"
         android:background="#fffeffff"
         android:gravity="center_vertical"
@@ -45,8 +45,8 @@
                 android:id="@+id/txtusuario"
                 android:layout_width="205dp"
                 android:layout_height="wrap_content"
-                android:text="Escribe aquí"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:hint="Escribe aquí" />
 
             <TextView
                 android:id="@+id/contraseñas"
@@ -59,8 +59,9 @@
                 android:id="@+id/txtcontra"
                 android:layout_width="204dp"
                 android:layout_height="38dp"
-                android:text="Escribe aquí"
+                android:hint="Escribe aquí"
                 android:textSize="13sp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -71,17 +72,28 @@
             android:layout_x="24dp"
             android:layout_y="375dp"
             android:paddingBottom="10dp"
-            android:paddingTop="30dp">
-            <ImageView
+            android:paddingTop="30dp"
+            android:weightSum="1"
+            android:layout_weight="0.61">
+            <Button
                 android:id="@+id/btoingresa"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
-                android:background="@drawable/ingresa" />
+                android:background="@drawable/botonin" />
+
             <TextView
                 android:id="@+id/registra"
-                android:layout_width="267dp"
+                android:layout_width="match_parent"
                 android:layout_height="21dp"
-                android:text="¿No estas registrado?, Registrate Aquí" />
+                android:text="¿No estas registrado?, Registrate Aquí"
+                android:linksClickable="true"
+                android:longClickable="true"
+                android:autoLink="all"
+                android:clickable="true"
+                android:enabled="true"
+                android:onClick="Registro"
+                android:textColorLink="#ffffbae6" />
+
         </LinearLayout>
     </LinearLayout>
     <ImageView
@@ -89,8 +101,8 @@
         android:layout_width="58dp"
         android:layout_height="58dp"
         android:layout_x="127dp"
-        android:layout_y="165dp"
-        android:background="@drawable/usrmc" />
+        android:layout_y="146dp"
+        android:background="@drawable/usrmc1" />
     <RelativeLayout
         android:id="@+id/piecon"
         android:layout_width="wrap_content"
@@ -101,7 +113,7 @@
             android:id="@+id/homemc"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/enviarmc"
+            android:background="@drawable/enviar"
             android:layout_alignParentLeft="false"
             android:layout_alignParentBottom="false"
             android:layout_alignParentRight="false"
@@ -111,7 +123,7 @@
             android:id="@+id/llamamc"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/ictelmc"
+            android:background="@drawable/ictel"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:onClick="llamar" />
@@ -121,6 +133,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:background="@drawable/webmc" />
+            android:background="@drawable/webmc"
+            android:onClick="Web" />
+
     </RelativeLayout>
 </AbsoluteLayout>

@@ -3,7 +3,6 @@ package mx.com.cencel.comercial.cencel.util;
 import android.app.Activity;
 import android.util.TypedValue;
 import android.view.View;
-
 import mx.com.cencel.comercial.cencel.R;
 
 

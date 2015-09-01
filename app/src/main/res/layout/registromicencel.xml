@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+    android:id="@+id/registrousr"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:id="@+id/headerregusr"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:orientation="vertical"
+        android:layout_x="2dp"
+        android:layout_y="1dp">
+        <ImageView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/headeg" />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/arearegis"
+        android:layout_width="232dp"
+        android:layout_height="307dp"
+        android:layout_x="41dp"
+        android:layout_y="183dp">
+        <ScrollView
+            android:id="@+id/areacomp"
+            android:layout_width="230dp"
+            android:layout_height="255dp"
+            android:layout_alignParentLeft="true"
+            android:layout_above="@+id/btoregis">
+            <LinearLayout
+                android:id="@+id/regis"
+                android:layout_width="219dp"
+                android:layout_height="250dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/nom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre:"
+                    android:textSize="14dp" />
+                <EditText
+                    android:id="@+id/nom2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:hint="Ingresa tu nombre" />
+                <TextView
+                    android:id="@+id/correo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:text="Correo" />
+                <EditText
+                    android:id="@+id/correo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:hint="Ingresa tu correo" />
+                <TextView
+                    android:id="@+id/tel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Telefono"
+                    android:singleLine="true"
+                    android:phoneNumber="true"
+                    android:textSize="14dp" />
+                <EditText
+                    android:id="@+id/tel2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:hint="Ingresa tu numero de telefono" />
+                <TextView
+                    android:id="@+id/contra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contraseña"
+                    android:textSize="14dp" />
+                <EditText
+                    android:id="@+id/contra2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:hint="Ingresa una contraseña" />
+            </LinearLayout>
+        </ScrollView>
+        <Button
+            android:id="@+id/btoregis"
+            android:layout_width="231dp"
+            android:layout_height="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/btoregis1" />
+        <TextView
+            android:id="@+id/regisusu"
+            android:layout_width="161dp"
+            android:layout_height="-94dp"
+            android:text="Registro Usuario"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="17dp" />
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/usr"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_x="116dp"
+        android:layout_y="110dp"
+        android:background="@drawable/usrmc1" />
+</AbsoluteLayout>
