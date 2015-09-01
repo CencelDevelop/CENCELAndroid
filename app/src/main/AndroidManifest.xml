@@ -64,6 +64,10 @@
         <activity android:name=".activities.micencel.RegistroMiCencel"
             android:screenOrientation="portrait">
         </activity>
+
+        <activity android:name=".activities.micencel.InicioUsuario"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".activities.promos.PromocionesActivity" android:screenOrientation="portrait">
 
         </activity>

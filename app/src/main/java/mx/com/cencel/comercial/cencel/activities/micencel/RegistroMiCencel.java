@@ -173,7 +173,7 @@ public class RegistroMiCencel extends Activity {
     public void llamar(View view) {
         try {
             callIntent = new Intent(Intent.ACTION_CALL);
-            callIntent.setData(Uri.parse("tel:44459999"));
+            callIntent.setData(Uri.parse("tel:018000998000"));
             startActivity(callIntent);
         } catch (ActivityNotFoundException activityException) {
             Log.e("dialing-example", "Call failed", activityException);

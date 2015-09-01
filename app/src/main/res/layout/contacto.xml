@@ -1,121 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:id="@+id/imageView3"
-        android:contentDescription="@string/headmng"
-        android:background="@drawable/header_contacto"
-
-        android:singleLine="true"
-         />
-<LinearLayout
+<AbsoluteLayout
+    android:id="@+id/contacto"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
-
-    <Button
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:id="@+id/enviar"
-        android:background="@drawable/enviar"
-        android:onClick="llamar"
-       />
-
-    <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:id="@+id/call"
-        android:background="@drawable/ictel"
-        android:onClick="llamar"
-        android:layout_x="342dp"
-        android:layout_y="2dp"
-        android:layout_marginLeft="230dp" />
-
-</LinearLayout>
-
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-
-        xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#400e0e0e">
+    <LinearLayout
+        android:id="@+id/headercontac"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="5dp"
-
-        tools:context=".MainActivity">
-
-
-
-        <RelativeLayout
+        android:layout_height="160dp"
+        android:orientation="vertical"
+        android:layout_x="2dp"
+        android:layout_y="1dp">
+        <ImageView
+            android:id="@+id/headercon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:padding="5dp">
+            android:background="@drawable/header_contacto" />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/areacont"
+        android:layout_width="274dp"
+        android:layout_height="325dp"
+        android:layout_x="16dp"
+        android:layout_y="164dp">
+        <ScrollView
+            android:id="@+id/arearecon"
+            android:layout_width="match_parent"
+            android:layout_height="255dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#ffffffff"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/enviar">
 
-
-
-            <EditText
-
-                android:id="@+id/Email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_alignParentLeft="true"
+            <LinearLayout
+                android:id="@+id/regis"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="17dp"
                 android:layout_alignParentTop="true"
-                android:layout_margin="5dp"
-                android:hint="Escribe Tu Email"
-                android:inputType="textEmailAddress"
-                android:singleLine="true"
-                android:textColorHint="@color/cencelColor"
-                android:backgroundTint="@color/cencelColor2" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+                <TextView
+                    android:id="@+id/cor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Correo:"
+                    android:textSize="16dp"
+                    android:paddingTop="15dp" />
+                <EditText
+                    android:id="@+id/Email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="13sp"
+                    android:hint="Ingresa tu Email" />
+                <TextView
+                    android:id="@+id/nom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Nombre"
+                    android:paddingTop="10dp" />
+                <EditText
+                    android:id="@+id/Nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="13sp"
+                    android:hint="Ingresa tu nombre" />
+                <TextView
+                    android:id="@+id/tel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Telefono"
+                    android:textSize="16dp"
+                    android:paddingTop="10dp" />
+                <EditText
+                    android:id="@+id/Telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:numeric="integer"
+                    android:singleLine="true"
+                    android:phoneNumber="true"
+                    android:hint="Ingresa tu numero de telefono" />
+                <TextView
+                    android:id="@+id/comen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comentario"
+                    android:textSize="16dp"
+                    android:paddingTop="10dp" />
+                <EditText
+                    android:id="@+id/Comentario"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:textSize="13sp"
+                    android:inputType="textMultiLine"
+                    android:hint="Escribe tu comentario"
+                    />
+                <TextView
+                    android:id="@+id/inv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contraseña"
+                    android:textSize="16dp"
+                    android:paddingTop="15dp"
+                    android:visibility="invisible"
+                    android:paddingBottom="150dp" />
+            </LinearLayout>
+        </ScrollView>
 
-            <EditText
+        <Button
+            android:layout_width="37dp"
+            android:layout_height="50dp"
+            android:id="@+id/enviar"
+            android:background="@drawable/enviar"
+            android:layout_x="71dp"
+            android:layout_y="463dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-                android:id="@+id/Nombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/Email"
-                android:layout_margin="5dp"
-                android:hint="Ingresa Tu Nombre"
-                android:singleLine="true"
-                android:textColorHint="@color/cencelColor"
-                android:backgroundTint="@color/cencelColor2" />
+        <Button
+            android:layout_width="37dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ictel"
+            android:id="@+id/llamar"
+            android:onClick="llamar"
+            android:layout_x="215dp"
+            android:layout_y="461dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/enviar"
+            android:layout_toEndOf="@+id/enviar" />
 
-            <EditText
+    </RelativeLayout>
 
-                android:id="@+id/Telefono"
-                android:numeric="integer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/Nombre"
-                android:layout_margin="5dp"
-                android:maxLength="10"
-                android:hint="Ingresa Tu Telefono"
-                android:singleLine="true"
-                android:phoneNumber="true"
-                android:textColorHint="@color/cencelColor"
-                android:backgroundTint="@color/cencelColor2" />
-
-
-            <EditText
-
-                android:id="@+id/Comentario"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_below="@id/Telefono"
-                android:layout_margin="5dp"
-                android:gravity="top|left"
-                android:hint="Escribe Tu Comentario"
-                android:inputType="textMultiLine"
-                android:textColorHint="@color/cencelColor"
-                android:backgroundTint="@color/cencelColor2" />
-
-
-        </RelativeLayout>
-
-    </ScrollView>
-
-
-</LinearLayout>
+</AbsoluteLayout>

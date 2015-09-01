@@ -107,8 +107,7 @@ public class ContactoActivity extends Activity {
 
                     if (getText.matches(Expn) && getText.length() > 0)
                     {
-                        //Toast toast2 = Toast.makeText(getApplicationContext(), "Email correcto", Toast.LENGTH_SHORT);
-                        //toast2.show();
+
                         Toast toast1 = Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_SHORT);
                         toast1.show();
                         (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(ContactoActivity.this, "sendComments"));
@@ -215,7 +214,7 @@ public class ContactoActivity extends Activity {
     public void llamar(View view){
         try {
             callIntent = new Intent(Intent.ACTION_CALL);
-            callIntent.setData(Uri.parse("tel:44459999"));
+            callIntent.setData(Uri.parse("tel:018000998000"));
             startActivity(callIntent);
         } catch (ActivityNotFoundException activityException) {
             Log.e("dialing-example", "Call failed", activityException);

@@ -3,7 +3,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/miCencel">
+    android:id="@+id/miCencel"
+    android:background="#400e0e0e">
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -26,7 +27,7 @@
         android:layout_x="31dp"
         android:layout_y="176dp"
         android:weightSum="1"
-        android:background="#fffeffff"
+        android:background="#ffffffff"
         android:gravity="center_vertical"
         android:paddingTop="5dp">
         <LinearLayout

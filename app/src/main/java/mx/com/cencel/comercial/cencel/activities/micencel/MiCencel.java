@@ -92,8 +92,13 @@ public class MiCencel extends Activity {
                 toast2.show();
             }
             else {
-                Toast toast3 = Toast.makeText(getApplicationContext(), "Usuario Correcto", Toast.LENGTH_SHORT);
-                toast3.show();
+                //Toast toast3 = Toast.makeText(getApplicationContext(), "Usuario Correcto", Toast.LENGTH_SHORT);
+                //toast3.show();
+
+                Intent intent = new Intent(getApplicationContext(), InicioUsuario.class);
+                startActivity(intent);
+
+
 
                 usuario.setText("");
                 contraseña.setText("");
