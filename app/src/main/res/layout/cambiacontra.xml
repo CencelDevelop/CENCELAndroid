@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<AbsoluteLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/miCenceles"
+    android:background="@drawable/fond2">
+
+    <LinearLayout
+        android:id="@+id/textos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="23dp"
+        android:orientation="vertical"
+        android:layout_x="2dp"
+        android:layout_y="5dp"
+        android:weightSum="1"
+        android:background="@null"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="61dp"
+            android:layout_height="95dp"
+            android:id="@+id/icocen"
+            android:layout_x="113dp"
+            android:layout_y="70dp"
+            android:background="@drawable/iconocen"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/regisusu"
+            android:layout_width="match_parent"
+            android:layout_height="-94dp"
+            android:text="Cambia tu contraseña"
+            android:textSize="17dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="10dp"
+            android:textColor="#ffffffff"
+            android:layout_above="@+id/areacomp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:paddingBottom="19dp" />
+
+        <EditText
+        android:id="@+id/txtguid"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:textSize="15dp"
+        android:hint="Usuario"
+        android:background="@drawable/fnini"
+        android:paddingLeft="3dp"
+        android:textColor="#ff0d0d0d"
+        android:textColorHint="#ff0d0d0d"
+        android:singleLine="true"
+        android:gravity="center" />
+        <TextView
+            android:id="@+id/invi"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:hint="invi"
+            android:layout_weight="0.25"
+            android:visibility="invisible" />
+        <EditText
+            android:id="@+id/txtemail"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:hint="Email"
+            android:textSize="15dp"
+            android:background="@drawable/fnini"
+            android:paddingLeft="3dp"
+            android:textColorHint="#ff0d0d0d"
+            android:textColor="#ff0d0d0d"
+            android:singleLine="true"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/invi4"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:hint="invi"
+            android:layout_weight="0.25"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/txtcontra1"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:textSize="15dp"
+            android:hint="Nueva Contraseña"
+            android:background="@drawable/fnini"
+            android:paddingLeft="3dp"
+            android:textColor="#ff0d0d0d"
+            android:singleLine="true"
+            android:textColorHint="#ff0d0d0d"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/invi0"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:hint="invi"
+            android:layout_weight="0.25"
+            android:visibility="invisible" />
+        <EditText
+            android:id="@+id/txtcontra2"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:hint="Vuelve escribir tu contaseña"
+            android:textSize="15dp"
+            android:background="@drawable/fnini"
+            android:paddingLeft="3dp"
+            android:textColorHint="#ff0d0d0d"
+            android:singleLine="true"
+            android:textColor="#ff0d0d0d"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/invi2"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:hint="invi"
+            android:layout_weight="0.25"
+            android:visibility="invisible" />
+
+
+        <TextView
+            android:id="@+id/invi6"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:hint="invi"
+            android:layout_weight="0.25"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btocambia"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="@drawable/fnbtoin"
+            android:text="Cambiar"
+            android:layout_x="-1dp"
+            android:layout_y="461dp"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffffffff" />
+
+    </LinearLayout>
+
+
+</AbsoluteLayout>

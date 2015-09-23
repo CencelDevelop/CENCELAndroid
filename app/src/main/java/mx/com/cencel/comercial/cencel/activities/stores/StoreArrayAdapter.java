@@ -61,7 +61,7 @@ public class StoreArrayAdapter extends ArrayAdapter<StoreInformation> {
         StoreInformation store = itemList.get(position);
 
         // obtener la celda
-        LinearLayout rootLayout = (LinearLayout) rowView.findViewById(R.id.store_row_root);
+               LinearLayout rootLayout = (LinearLayout) rowView.findViewById(R.id.store_row_root);
 
         // obtener condenido de la celda
         TextView storeInfo = (TextView) rowView.findViewById(R.id.store_detail_info);

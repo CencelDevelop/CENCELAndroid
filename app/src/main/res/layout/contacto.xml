@@ -20,10 +20,13 @@
     </LinearLayout>
     <RelativeLayout
         android:id="@+id/areacont"
-        android:layout_width="274dp"
+        android:layout_width="match_parent"
         android:layout_height="325dp"
-        android:layout_x="16dp"
-        android:layout_y="164dp">
+        android:layout_x="-2dp"
+        android:layout_y="168dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="8dp">
         <ScrollView
             android:id="@+id/arearecon"
             android:layout_width="match_parent"
@@ -53,12 +56,14 @@
                     android:layout_height="wrap_content"
                     android:text="Correo:"
                     android:textSize="16dp"
+                    android:singleLine="true"
                     android:paddingTop="15dp" />
                 <EditText
                     android:id="@+id/Email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="13sp"
+                    android:singleLine="true"
                     android:hint="Ingresa tu Email" />
                 <TextView
                     android:id="@+id/nom"
@@ -72,14 +77,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="13sp"
+                    android:singleLine="true"
                     android:hint="Ingresa tu nombre" />
                 <TextView
                     android:id="@+id/tel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:numeric="integer"
                     android:text="Telefono"
                     android:textSize="16dp"
-                    android:paddingTop="10dp" />
+                    android:paddingTop="10dp"
+                    android:singleLine="true"
+                    android:phoneNumber="true"/>
                 <EditText
                     android:id="@+id/Telefono"
                     android:layout_width="match_parent"

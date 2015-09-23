@@ -5,27 +5,15 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/fond4">
+    android:background="@drawable/fond5">
 
     <RelativeLayout
         android:id="@+id/arearegis"
         android:layout_width="match_parent"
-        android:layout_height="347dp"
-        android:layout_x="0dp"
-        android:layout_y="115dp"
+        android:layout_height="match_parent"
+        android:layout_x="2dp"
+        android:layout_y="0dp"
         android:background="@null">
-
-        <Button
-            android:id="@+id/btoregis"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@drawable/fnbtoin"
-            android:text="Registra"
-            android:textColor="#ffffffff"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
         <ScrollView
             android:id="@+id/areacomp"
             android:layout_width="230dp"
@@ -42,30 +30,7 @@
                 android:layout_height="400dp"
                 android:orientation="vertical"
                 android:paddingLeft="5dp"
-                android:paddingTop="15dp"
                 android:paddingBottom="17dp">
-                <TextView
-                    android:id="@+id/regisusu"
-                    android:layout_width="match_parent"
-                    android:layout_height="-94dp"
-                    android:text="Registro Usuario"
-                    android:textSize="17dp"
-                    android:paddingTop="5dp"
-                    android:paddingLeft="10dp"
-                    android:textColor="#ffffffff"
-                    android:layout_above="@+id/areacomp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_weight="0.62"
-                    android:gravity="center" />
-
-                <TextView
-                    android:id="@+id/invi5"
-                    android:layout_width="205dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="15dp"
-                    android:hint="invi"
-                    android:layout_weight="0.25"
-                    android:visibility="invisible" />
 
                 <EditText
                     android:id="@+id/nom2"
@@ -77,6 +42,7 @@
                     android:layout_weight="0.23"
                     android:gravity="center"
                     android:textColorHint="#ff0d0d0d"
+                    android:singleLine="true"
                     android:textColor="#ff0d0d0d" />
 
                 <TextView
@@ -97,6 +63,7 @@
                     android:background="@drawable/fnini"
                     android:gravity="center"
                     android:textColor="#ff0d0d0d"
+                    android:singleLine="true"
                     android:textColorHint="#ff0d0d0d" />
 
                 <TextView
@@ -137,6 +104,7 @@
                     android:background="@drawable/fnini"
                     android:gravity="center"
                     android:textColor="#ff0d0d0d"
+                    android:singleLine="true"
                     android:textColorHint="#ff0d0d0d" />
                 <TextView
                     android:id="@+id/invi4"
@@ -146,22 +114,51 @@
                     android:hint="invi"
                     android:layout_weight="0.25"
                     android:visibility="invisible" />
-
-
+                <TextView
+                    android:id="@+id/inv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Invisible"
+                    android:textSize="15dp"
+                    android:paddingTop="10dp"
+                    android:visibility="invisible"
+                    android:paddingBottom="180dp"
+                    android:background="@null" />
             </LinearLayout>
-
         </ScrollView>
+        <Button
+            android:id="@+id/btoregis"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/fnbtoin"
+            android:text="Actualiza"
+            android:textColor="#ffffffff"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/regisusu"
+            android:layout_width="match_parent"
+            android:layout_height="-94dp"
+            android:text="Actializa tu informacion"
+            android:textSize="17dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="10dp"
+            android:textColor="#ffffffff"
+            android:layout_above="@+id/areacomp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="56dp"
+            android:gravity="center" />
 
         <ImageView
             android:layout_width="61dp"
             android:layout_height="95dp"
             android:id="@+id/icocen"
-            android:layout_x="126dp"
-            android:layout_y="43dp"
+            android:layout_x="107dp"
+            android:layout_y="109dp"
             android:background="@drawable/iconocen"
-            android:layout_alignParentTop="true"
+            android:layout_above="@+id/regisusu"
             android:layout_centerHorizontal="true" />
-
     </RelativeLayout>
 
 </AbsoluteLayout>

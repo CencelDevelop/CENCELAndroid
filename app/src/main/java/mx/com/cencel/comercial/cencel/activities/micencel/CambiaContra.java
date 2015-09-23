@@ -2,12 +2,9 @@ package mx.com.cencel.comercial.cencel.activities.micencel;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,44 +22,45 @@ import mx.com.cencel.comercial.cencel.R;
 import mx.com.cencel.comercial.cencel.util.CencelUtils;
 
 /**
- * Created by vcid on 01/09/15.
+ * Created by vcid on 15/09/15.
  */
-public class RegistroMiCencel extends Activity {
+public class CambiaContra extends Activity {
 
-    public Intent callIntent;
-    public EditText Nombre;
-    public EditText Correo;
-    public EditText Telefono;
+
+    public EditText Guid;
+    public EditText Email;
     public EditText Contraseña;
-    public Button Registrar;
+    public EditText Contraseña2;
+    public Button Cambia;
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registromicencel);
+        setContentView(R.layout.cambiacontra);
 
-        Nombre = (EditText) findViewById(R.id.nom2);
-        Correo = (EditText) findViewById(R.id.correo2);
-        Telefono = (EditText) findViewById(R.id.tel2);
-        Contraseña = (EditText) findViewById(R.id.contra2);
+        Guid = (EditText) findViewById(R.id.txtguid);
+        Email = (EditText) findViewById(R.id.txtemail);
+        Contraseña = (EditText) findViewById(R.id.txtcontra1);
+        Contraseña2 = (EditText) findViewById(R.id.txtcontra2);
 
-        Registrar = (Button) findViewById(R.id.btoregis);
-        Registrar.setOnClickListener(new View.OnClickListener() {
+
+        Cambia = (Button) findViewById(R.id.btocambia);
+        Cambia.setOnClickListener(new View.OnClickListener() {
 
 
             @Override
             public void onClick(View v) {
 
-                String nom = Nombre.getText().toString();
-                String cor = Correo.getText().toString();
-                String tel = Telefono.getText().toString();
+                String guid = Guid.getText().toString();
+                String ema = Email.getText().toString();
                 String con = Contraseña.getText().toString();
+                String con2 = Contraseña2.getText().toString();
 
-                if (nom.equals("") || cor.equals("") || tel.equals("") || con.equals("") ) {
+                if (guid.equals("") || ema.equals("") || con.equals("") ) {
                     Toast toast1 = Toast.makeText(getApplicationContext(), "Llene los campos faltantes", Toast.LENGTH_SHORT);
                     toast1.show();
 
-                } String getText=Correo.getText().toString();
+                } String getText=Email.getText().toString();
                 String Expn =
                         "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
                                 +"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
@@ -73,9 +71,13 @@ public class RegistroMiCencel extends Activity {
 
                 if (getText.matches(Expn) && getText.length() > 0)
                 {
-                  
-                    (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(RegistroMiCencel.this, "generarNuevoAsociado"));
-
+                    if (con.equals(con2)) {
+                        (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(CambiaContra.this, "recuperaContrasena"));
+                    }
+                    else {
+                        Toast toast2 = Toast.makeText(getApplicationContext(), "tus contraseñas no coinciden favor de verificar", Toast.LENGTH_SHORT);
+                        toast2.show();
+                    }
 
                 }
                 else
@@ -89,20 +91,19 @@ public class RegistroMiCencel extends Activity {
     }
 
     private class PushToServerHelper extends AsyncTask<String, Void, String> {
-        private final ProgressDialog dialog = new ProgressDialog(RegistroMiCencel.this);
+        private final ProgressDialog dialog = new ProgressDialog(CambiaContra.this);
 
         @Override
         protected void onPostExecute(String message) {
             super.onPostExecute(message);
             dialog.dismiss();
-           // Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-            Toast toastR = Toast.makeText(getApplicationContext(), "Se ha registrado el usuario", Toast.LENGTH_SHORT);
+            // Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            Toast toastR = Toast.makeText(getApplicationContext(), "Se actualizo tu contraseña", Toast.LENGTH_SHORT);
             toastR.show();
-                Nombre.setText("");
-                Correo.setText("");
-                Telefono.setText("");
-                Contraseña.setText("");
-
+            Guid.setText("");
+            Email.setText("");
+            Contraseña.setText("");
+            Contraseña2.setText("");
             Intent intent = new Intent(getApplicationContext(), MiCencel.class);
             startActivity(intent);
 
@@ -133,35 +134,23 @@ public class RegistroMiCencel extends Activity {
                 // cuerpo de la peticion
                 JSONObject datosAsociadoObj = new JSONObject();
 
-                datosAsociadoObj.put("NombreCompleto", Nombre.getText());
-                datosAsociadoObj.put("Contrasena", Contraseña.getText());
-                datosAsociadoObj.put("Telefono", Telefono.getText());
-                datosAsociadoObj.put("Correo", Correo.getText());
+                datosAsociadoObj.put("guid", Guid.getText());
+                datosAsociadoObj.put("email", Email.getText());
+                datosAsociadoObj.put("nuevaContrasena", Contraseña.getText());
+
                 OutputStream output = cnn.getOutputStream();
-
-
                 output.write(datosAsociadoObj.toString().getBytes("UTF-8"));
                 cnn.connect();
 
                 //Validar si regreso algo o no
-
-
                 InputStream stream = cnn.getInputStream();
-
-
                 byte[] b = new byte[1024];
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
                 while (stream.read(b) != -1)
                     baos.write(b);
                 String responseJson = new String(baos.toByteArray());
-
                 JSONObject jsonObject = new JSONObject(responseJson);
-
                 result = jsonObject.getString("d");
-
-
-
             } catch (Throwable t) {
                 t.printStackTrace();
                 return null;

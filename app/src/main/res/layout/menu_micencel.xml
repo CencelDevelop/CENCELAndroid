@@ -1,99 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout
-    android:id="@+id/widget0"
+    android:id="@+id/areamicencel"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <DigitalClock
-        android:id="@+id/widget34"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="06:13 PM"
-        android:layout_x="243dp"
-        android:layout_y="5dp" />
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/fond3"
+    android:paddingLeft="8dp"
+    android:paddingTop="8dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="8dp">
+    <ScrollView
+        android:id="@+id/scrollarea"
+        android:layout_width="match_parent"
+        android:layout_height="345dp"
+        android:layout_x="-3dp"
+        android:layout_y="135dp"
+        android:paddingBottom="8dp">
+
+        <RelativeLayout
+            android:id="@+id/areacont"
+            android:layout_width="match_parent"
+            android:layout_height="538dp"
+            android:layout_x="4dp"
+            android:layout_y="149dp">
+
+            <RelativeLayout
+                android:id="@+id/areapto"
+                android:layout_width="250dp"
+                android:layout_height="270dp"
+                android:layout_below="@+id/contpunt"
+                android:layout_centerHorizontal="true"
+                android:background="@null">
+                <ImageView
+                    android:id="@+id/esfera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/esfera2" />
+                <TextView
+                    android:id="@+id/guid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Usuario"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffffff"
+                    android:paddingLeft="18dp"
+                    android:paddingTop="18dp"
+                    android:paddingRight="18dp"
+                    android:paddingBottom="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NU"
+                    android:id="@+id/numeroes"
+                    android:layout_x="129dp"
+                    android:layout_y="518dp"
+                    android:singleLine="true"
+                    android:textColor="#ff0a0b0b"
+                    android:textSize="60dp"
+                    android:gravity="center|center_horizontal"
+                    android:layout_alignRight="@+id/esfera"
+                    android:layout_alignEnd="@+id/esfera"
+                    android:layout_alignBottom="@+id/esfera"
+                    android:layout_alignTop="@+id/esfera"
+                    android:layout_alignLeft="@+id/esfera"
+                    android:layout_alignStart="@+id/esfera" />
+
+
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/cerrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cerra Sesion"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffffff"
+                android:linksClickable="true"
+                android:longClickable="true"
+                android:autoLink="all"
+                android:clickable="true"
+                android:enabled="true"
+                android:onClick="CerrarSesion"
+                android:paddingLeft="25dp"
+                android:paddingTop="25dp"
+                android:paddingRight="25dp"
+                android:paddingBottom="25dp" />
+            <TextView
+                android:id="@+id/actuinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Actualiza tu Informacion"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffffff"
+                android:onClick="ActializaInfo"
+                android:linksClickable="true"
+                android:longClickable="true"
+                android:autoLink="all"
+                android:clickable="true"
+                android:enabled="true"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+
+            <RelativeLayout
+                android:id="@+id/contpunt"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_below="@+id/contsaldo"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/fnini"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp">
+                <TextView
+                    android:id="@+id/puntos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Puntos"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ff0a0a0a" />
+                <TextView
+                    android:id="@+id/txtpuntos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tus cenceles son:"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="#ff0a0a0a" />
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:id="@+id/contsaldo"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/fnini"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp">
+                <TextView
+                    android:id="@+id/saldo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="saldo"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ff0a0a0a" />
+                <TextView
+                    android:id="@+id/txtsaldo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tus puntos acumulado son:"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="#ff0a0a0a" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/invi2"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:hint="invi"
+                android:layout_weight="0.25"
+                android:visibility="invisible"
+                android:layout_x="-10dp"
+                android:layout_y="535dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="62dp" />
+
+
+        </RelativeLayout>
+    </ScrollView>
     <RelativeLayout
-        android:id="@+id/widget40"
-        android:layout_width="277dp"
-        android:layout_height="99dp"
-        android:layout_x="9dp"
-        android:layout_y="28dp">
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="111dp"
+        android:layout_x="2dp"
+        android:layout_y="5dp"
+        android:background="@drawable/fnini">
+        <TextView
+            android:id="@+id/asociado"
+            android:layout_width="160dp"
+            android:layout_height="21dp"
+            android:text="Nombre Completo"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ff0a0a0a" />
         <ImageView
-            android:id="@+id/widget32"
-            android:layout_width="92dp"
-            android:layout_height="85dp"
-            android:layout_alignBaseline="@+id/widget33"
-            android:layout_alignParentLeft="true" />
-        <TextView
-            android:id="@+id/widget33"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="Hola, Nombre Usuario"
-            android:textSize="18sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true" />
+            android:id="@+id/imausr"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/asociado" />
     </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/widget41"
-        android:layout_width="275dp"
-        android:layout_height="35dp"
-        android:layout_x="11dp"
-        android:layout_y="146dp">
-        <TextView
-            android:id="@+id/widget38"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Saldo:_____"
-            android:layout_alignTop="@+id/widget39"
-            android:layout_alignParentLeft="true" />
-        <TextView
-            android:id="@+id/widget39"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Puntos:_____"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/widget42"
-        android:layout_width="267dp"
-        android:layout_height="151dp"
-        android:layout_x="18dp"
-        android:layout_y="202dp">
-        <GridView
-            android:id="@+id/widget45"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numColumns="5"
-            android:columnWidth="20dp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/widget49"
-        android:layout_width="260dp"
-        android:layout_height="44dp"
-        android:layout_x="22dp"
-        android:layout_y="377dp">
-        <Button
-            android:id="@+id/widget51"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Informacion"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/widget52" />
-        <Button
-            android:id="@+id/widget50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Comparte"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true" />
-        <Button
-            android:id="@+id/widget52"
-            android:layout_width="83dp"
-            android:layout_height="wrap_content"
-            android:text="Acerca de"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true" />
-    </RelativeLayout>
+
 </AbsoluteLayout>

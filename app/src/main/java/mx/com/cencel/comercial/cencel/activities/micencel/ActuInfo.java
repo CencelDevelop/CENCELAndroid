@@ -2,9 +2,8 @@ package mx.com.cencel.comercial.cencel.activities.micencel;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.net.Uri;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,13 +22,14 @@ import java.net.URL;
 
 import mx.com.cencel.comercial.cencel.R;
 import mx.com.cencel.comercial.cencel.util.CencelUtils;
+import mx.com.cencel.comercial.cencel.util.SQLite;
 
 /**
- * Created by vcid on 01/09/15.
+ * Created by vcid on 15/09/15.
  */
-public class RegistroMiCencel extends Activity {
+public class ActuInfo extends Activity {
 
-    public Intent callIntent;
+
     public EditText Nombre;
     public EditText Correo;
     public EditText Telefono;
@@ -39,7 +39,7 @@ public class RegistroMiCencel extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registromicencel);
+        setContentView(R.layout.actuainfo);
 
         Nombre = (EditText) findViewById(R.id.nom2);
         Correo = (EditText) findViewById(R.id.correo2);
@@ -73,8 +73,8 @@ public class RegistroMiCencel extends Activity {
 
                 if (getText.matches(Expn) && getText.length() > 0)
                 {
-                  
-                    (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(RegistroMiCencel.this, "generarNuevoAsociado"));
+
+                    (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(ActuInfo.this, "actualizaAsociado"));
 
 
                 }
@@ -89,21 +89,21 @@ public class RegistroMiCencel extends Activity {
     }
 
     private class PushToServerHelper extends AsyncTask<String, Void, String> {
-        private final ProgressDialog dialog = new ProgressDialog(RegistroMiCencel.this);
+        private final ProgressDialog dialog = new ProgressDialog(ActuInfo.this);
 
         @Override
         protected void onPostExecute(String message) {
             super.onPostExecute(message);
             dialog.dismiss();
-           // Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-            Toast toastR = Toast.makeText(getApplicationContext(), "Se ha registrado el usuario", Toast.LENGTH_SHORT);
+            // Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            Toast toastR = Toast.makeText(getApplicationContext(), "Se ha actualizado tu informacion", Toast.LENGTH_SHORT);
             toastR.show();
-                Nombre.setText("");
-                Correo.setText("");
-                Telefono.setText("");
-                Contraseña.setText("");
-
-            Intent intent = new Intent(getApplicationContext(), MiCencel.class);
+            Nombre.setText("");
+            Correo.setText("");
+            Telefono.setText("");
+            Contraseña.setText("");
+            Registrar.setText("");
+            Intent intent = new Intent(getApplicationContext(), InicioUsuario.class);
             startActivity(intent);
 
         }
@@ -133,6 +133,20 @@ public class RegistroMiCencel extends Activity {
                 // cuerpo de la peticion
                 JSONObject datosAsociadoObj = new JSONObject();
 
+                //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                Log.i("SQLite", "===================================================");
+                Log.i("SQLite", "Inicio de aplicación SQLite");
+                SQLite sqlite = new SQLite(getApplicationContext());
+                sqlite.abrir();
+                Log.i("SQLite", "Se imprime registros de tabla");
+                Cursor cursor = sqlite.getGuid();//Se obtiene registros
+                String lista = sqlite.imprimirListaguid(cursor);
+                Log.i("SQLite", "Registros: \r\n" + lista);
+                Log.i("SQLite", "fin :)  ");
+                Log.i("SQLite", "===================================================");
+                //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                //////////////////////////////////////////////////////////
+                datosAsociadoObj.put("guid", lista);
                 datosAsociadoObj.put("NombreCompleto", Nombre.getText());
                 datosAsociadoObj.put("Contrasena", Contraseña.getText());
                 datosAsociadoObj.put("Telefono", Telefono.getText());
@@ -145,22 +159,14 @@ public class RegistroMiCencel extends Activity {
 
                 //Validar si regreso algo o no
 
-
                 InputStream stream = cnn.getInputStream();
-
-
                 byte[] b = new byte[1024];
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
                 while (stream.read(b) != -1)
                     baos.write(b);
                 String responseJson = new String(baos.toByteArray());
-
                 JSONObject jsonObject = new JSONObject(responseJson);
-
                 result = jsonObject.getString("d");
-
-
 
             } catch (Throwable t) {
                 t.printStackTrace();
@@ -174,6 +180,9 @@ public class RegistroMiCencel extends Activity {
 
 
 }
+
+
+
 
 
 

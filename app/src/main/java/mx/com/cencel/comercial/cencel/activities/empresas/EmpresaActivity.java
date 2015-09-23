@@ -78,65 +78,51 @@ public class EmpresaActivity extends Activity {
         list = (ListView) findViewById(R.id.menu_emp);
         list.setAdapter(adapter);
 
-        // obtener la celda
-
-
-
-
         // manejando el evento de tap o click
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // String selectedItemText= menuItemNames[+position];
-                // Toast.makeText(getApplicationContext(), selectedItemText, Toast.LENGTH_SHORT).show();
 
-            /*    ViewGroup rootView=(ViewGroup)findViewById(android.R.id.content);
-                RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.root_layout);
-                rootView.removeView(rLayout);*/
 
                 // pantallas consecuentes
                 Intent nextActivity = new Intent();
                 switch (position) {
                     case 0:
-                        //"Email Corto",
-
-
-                        setContentView(R.layout.email_corto);
-
+                        // "Red Privada de Datos"
+                        setContentView(R.layout.red_privada);
                         break;
                     case 1:
+                        // "Recuerda SMS Empresa"
+                        setContentView(R.layout.recuerda_sms);
+
+                        break;
+                    case 2:
+                        //     "Mensajeria Empresarial",
+                        setContentView(R.layout.mensajeria_emp);
+                        break;
+                    case 3:
+                        //"Email Corto",
+                        setContentView(R.layout.email_corto);
+                        break;
+
+                    case 4:
+                        // "Push Telcel",
+                        setContentView(R.layout.push_telcel);
+                        break;
+
+                    case 5:
+                        //       "Localizacion Vehicular",
+                        setContentView(R.layout.localizacion_veh);
+                        break;
+                    case 6:
+
                         // "Localizacion Empresarial",
                         setContentView(R.layout.localizacion_emp);
 
                         break;
-
-                    case 2:
-
-                        //       "Localizacion Vehicular",
-                        setContentView(R.layout.localizacion_veh);
-                        break;
-
-                    case 3:
+                    case 7:
                         //   "M2M",
                         setContentView(R.layout.m2m);
-                        break;
-
-                    case 4:
-                        //     "Mensajeria Empresarial",
-                        setContentView(R.layout.mensajeria_emp);
-                        break;
-
-                    case 5:
-                        // "Push Telcel",
-                        setContentView(R.layout.push_telcel);
-                        break;
-                    case 6:
-                        // "Recuerda SMS Empresa"
-                        setContentView(R.layout.recuerda_sms);
-                        break;
-                    case 7:
-                        // "Recuerda SMS Empresa"
-                        setContentView(R.layout.red_privada);
                         break;
 
                 }
