@@ -91,6 +91,10 @@
              android:singleLine="true"
              android:textColor="#ff0d0d0d"
              android:gravity="center" />
+
+
+
+
          <TextView
              android:id="@+id/invi2"
              android:layout_width="205dp"

@@ -1,6 +1,7 @@
 package mx.com.cencel.comercial.cencel.activities.micencel;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -19,6 +21,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+import com.facebook.login.widget.ProfilePictureView;
+import com.facebook.share.widget.ShareDialog;
+
+import com.squareup.picasso.Picasso;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
@@ -43,12 +60,15 @@ public class InicioUsuario extends Activity {
     public ImageView imagenpun;
     public TextView guid;
     public TextView puntos2;
+    ShareDialog shareDialog;
+    ProfilePictureView profile;
 
 
     private static AsociadoSimple AsociadoRegis;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.menu_micencel);
 
         asociado = (TextView)findViewById(R.id.asociado);
@@ -57,29 +77,83 @@ public class InicioUsuario extends Activity {
         cenceles = (TextView)findViewById(R.id.saldo);
         imagenpun= (ImageView)findViewById(R.id.esfera);
         guid =(TextView)findViewById(R.id.guid);
+        profile = (ProfilePictureView)findViewById(R.id.picture);
+        shareDialog = new ShareDialog(this);
 
-        Bundle extras = getIntent().getExtras();
-        if(extras != null){
-            AsociadoRegis = (AsociadoSimple) extras.get("vane");
-        }
+
+//        Bundle extras = getIntent().getExtras();
+//        if(extras != null){
+//            AsociadoRegis = (AsociadoSimple) extras.get("vane");
+//        }
 
 
         (new PushToServerHelper()).execute(CencelUtils.buildUrlRequest(InicioUsuario.this, "vistaInfoAsociado"));
 
 
-        //extraemos el drawable en un bitmap
-        Drawable originalDrawable = getResources().getDrawable(R.drawable.usrnull2);
-        Bitmap originalBitmap = ((BitmapDrawable) originalDrawable).getBitmap();
+//        //extraemos el drawable en un bitmap
+//        Drawable originalDrawable = getResources().getDrawable(R.drawable.usrnull2);
+//        Bitmap originalBitmap = ((BitmapDrawable) originalDrawable).getBitmap();
+//
+//
+//        //creamos el drawable redondeado
+//        RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(getResources(), originalBitmap);
+//        //asignamos el CornerRadius
+//        roundedDrawable.setCornerRadius(originalBitmap.getHeight());
+//        ImageView imageView = (ImageView) findViewById(R.id.picture);
+//        imageView.setImageDrawable(roundedDrawable);
 
-        //creamos el drawable redondeado
-        RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(getResources(), originalBitmap);
-        //asignamos el CornerRadius
-        roundedDrawable.setCornerRadius(originalBitmap.getHeight());
-        ImageView imageView = (ImageView) findViewById(R.id.imausr);
-        imageView.setImageDrawable(roundedDrawable);
+//
+//        Profile profileDefault = Profile.getCurrentProfile();
+//        //Librería usada para poder mostrar la foto de perfil de facebook con una transformación circular
+//        Picasso.with(InicioUsuario.this).load(profileDefault.getProfilePictureUri(100,100)).transform(new CircleTransform()).into(profile);
+
+
+        if(AccessToken.getCurrentAccessToken() != null){
+            RequestData();
+
+        }
+
 
 
     }
+
+
+
+    public void RequestData(){
+        GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+            @Override
+            public void onCompleted(JSONObject object,GraphResponse response) {
+
+                JSONObject json = response.getJSONObject();
+                try {
+                    if(json != null){
+                        String text = "<b>Nombre :</b> "+json.getString("name")+"<br><br><b>Email :</b> "+json.getString("email")+"<br><br><b>Link de perfil :</b> "+json.getString("link");
+                        profile.setProfileId(json.getString("id"));
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,link,email,picture");
+        request.setParameters(parameters);
+        request.executeAsync();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+
+
+
+
+
 
     private class PushToServerHelper extends AsyncTask<String, Void, ResultadoThread> {
         private final ProgressDialog dialog = new ProgressDialog(InicioUsuario.this);
@@ -177,9 +251,31 @@ public class InicioUsuario extends Activity {
                 cnn.setDoOutput(true);
                 cnn.setRequestProperty("Content-Type", "application/json");
 
+
+
+                //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                Log.i("SQLite", "===================================================");
+                Log.i("SQLite", "Inicio de aplicación SQLite");
+                SQLite sqlite = new SQLite(getApplicationContext());
+                sqlite.abrir();
+
+
+                Log.i("SQLite", "Se imprime registros de tabla");
+                Cursor cursor = sqlite.getGuid();//Se obtiene registros
+                String lista = sqlite.imprimirListaguid(cursor);
+                Log.i("SQLite", "Registros: \r\n" + lista);
+
+
+                // sqlite.cerrar();
+                Log.i("SQLite", "fin :)  ");
+                Log.i("SQLite", "===================================================");
+                //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                //////////////////////////////////////////////////////////
                 // cuerpo de la peticion
                 JSONObject jsonOut = new JSONObject();
-                jsonOut.put("guid", InicioUsuario.AsociadoRegis.getGuid());
+                jsonOut.put("guid", lista);
+
+               // jsonOut.put("guid", InicioUsuario.AsociadoRegis.getGuid());
                 OutputStream output = cnn.getOutputStream();
                 output.write(jsonOut.toString().getBytes("UTF-8"));
 
@@ -235,8 +331,10 @@ public class InicioUsuario extends Activity {
 
     public void CerrarSesion(View view) {
         (new CerrarServerHelper()).execute(CencelUtils.buildUrlRequest(InicioUsuario.this, "actualizaEstatusCierraConexion"));
+        //Cierra la sesion inciada en la aplicación
 
         Intent intent = new Intent(this, MenuMainActivity.class);
+        LoginManager.getInstance().logOut();
         startActivity(intent);
     }
 

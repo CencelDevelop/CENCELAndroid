@@ -20,14 +20,14 @@
         <RelativeLayout
             android:id="@+id/areacont"
             android:layout_width="match_parent"
-            android:layout_height="538dp"
+            android:layout_height="390dp"
             android:layout_x="4dp"
             android:layout_y="149dp">
 
             <RelativeLayout
                 android:id="@+id/areapto"
                 android:layout_width="250dp"
-                android:layout_height="270dp"
+                android:layout_height="210dp"
                 android:layout_below="@+id/contpunt"
                 android:layout_centerHorizontal="true"
                 android:background="@null">
@@ -40,7 +40,7 @@
                     android:background="@drawable/esfera2" />
                 <TextView
                     android:id="@+id/guid"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Usuario"
                     android:layout_alignParentBottom="true"
@@ -49,7 +49,8 @@
                     android:paddingLeft="18dp"
                     android:paddingTop="18dp"
                     android:paddingRight="18dp"
-                    android:paddingBottom="18dp" />
+                    android:paddingBottom="18dp"
+                    android:gravity="center" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -112,7 +113,7 @@
             <RelativeLayout
                 android:id="@+id/contpunt"
                 android:layout_width="match_parent"
-                android:layout_height="66dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/contsaldo"
                 android:layout_alignParentLeft="true"
                 android:background="@drawable/fnini"
@@ -124,9 +125,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Puntos"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="#ff0a0a0a" />
+                    android:textColor="#ff0a0a0a"
+                    android:layout_marginLeft="93dp"
+                    android:layout_marginStart="93dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/txtpuntos"
+                    android:layout_toEndOf="@+id/txtpuntos" />
                 <TextView
                     android:id="@+id/txtpuntos"
                     android:layout_width="wrap_content"
@@ -142,7 +146,7 @@
             <RelativeLayout
                 android:id="@+id/contsaldo"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:background="@drawable/fnini"
@@ -154,9 +158,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="saldo"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="#ff0a0a0a" />
+                    android:textColor="#ff0a0a0a"
+                    android:layout_marginLeft="39dp"
+                    android:layout_marginStart="39dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/txtsaldo"
+                    android:layout_toEndOf="@+id/txtsaldo" />
                 <TextView
                     android:id="@+id/txtsaldo"
                     android:layout_width="wrap_content"
@@ -185,6 +192,7 @@
 
         </RelativeLayout>
     </ScrollView>
+
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -201,12 +209,21 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:textColor="#ff0a0a0a" />
-        <ImageView
-            android:id="@+id/imausr"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+
+        <com.facebook.login.widget.ProfilePictureView
+            android:id="@+id/picture"
+            android:layout_gravity="center"
+            android:layout_width="200sp"
+            android:layout_height="200sp"
             android:layout_centerHorizontal="true"
             android:layout_above="@+id/asociado" />
-    </RelativeLayout>
 
-</AbsoluteLayout>
+        <!--   <ImageView
+              android:id="@+id/imausr"
+              android:layout_width="100dp"
+              android:layout_height="100dp"
+              android:layout_centerHorizontal="true"
+              android:layout_above="@+id/asociado" /> -->
+      </RelativeLayout>
+
+  </AbsoluteLayout>

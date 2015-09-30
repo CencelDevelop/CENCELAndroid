@@ -20,6 +20,19 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp" />
+    <Button
+        android:id="@+id/details"
+        android:text="Ver Detalles"
+        android:layout_gravity="center"
+        android:layout_width="200sp"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/share"
+        android:text="Publica"
+        android:layout_gravity="center"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content" />
 
 
     <TextView
@@ -29,9 +42,9 @@
         android:hint="Nombre"
         android:textSize="15dp"
         android:paddingLeft="3dp"
-        android:textColorHint="#ffffffff"
+        android:textColorHint="#ff0d0d0d"
         android:singleLine="true"
-        android:textColor="#ffffffff"
+        android:textColor="#ff0d0d0d"
         android:gravity="center"
         android:visibility="invisible" />
     <TextView
@@ -41,11 +54,10 @@
         android:hint="Correo"
         android:textSize="15dp"
         android:paddingLeft="3dp"
-        android:textColorHint="#ffffffff"
+        android:textColorHint="#ff0d0d0d"
         android:singleLine="true"
-        android:textColor="#ffffffff"
+        android:textColor="#ff0d0d0d"
         android:gravity="center"
         android:visibility="invisible" />
-
 
 </LinearLayout>
