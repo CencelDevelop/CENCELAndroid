@@ -83,7 +83,7 @@ public class InicioUsuario extends Activity {
 
 //        Bundle extras = getIntent().getExtras();
 //        if(extras != null){
-//            AsociadoRegis = (AsociadoSimple) extras.get("vane");
+ //          AsociadoRegis = (AsociadoSimple) extras.get("vane");
 //        }
 
 

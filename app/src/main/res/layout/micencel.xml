@@ -22,7 +22,7 @@
      android:layout_height="match_parent"
      xmlns:android="http://schemas.android.com/apk/res/android"
      android:id="@+id/miCenceles"
-     android:background="@drawable/fond1">
+     android:background="@drawable/c">
 
      <LinearLayout
          android:id="@+id/textos"
@@ -37,12 +37,12 @@
          android:gravity="center">
 
          <ImageView
-             android:layout_width="61dp"
+             android:layout_width="95dp"
              android:layout_height="95dp"
              android:id="@+id/icocen"
              android:layout_x="118dp"
              android:layout_y="111dp"
-             android:background="@drawable/iconocen"
+             android:background="@drawable/logocn"
              android:layout_gravity="center_horizontal" />
 
          <TextView

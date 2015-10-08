@@ -88,20 +88,20 @@ public class RegistroMiCencel extends Activity {
 
     }
 
-    private class PushToServerHelper extends AsyncTask<String, Void, String> {
+       private class PushToServerHelper extends AsyncTask<String, Void, String> {
         private final ProgressDialog dialog = new ProgressDialog(RegistroMiCencel.this);
 
         @Override
         protected void onPostExecute(String message) {
             super.onPostExecute(message);
             dialog.dismiss();
-           // Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
             Toast toastR = Toast.makeText(getApplicationContext(), "Se ha registrado el usuario", Toast.LENGTH_SHORT);
             toastR.show();
-                Nombre.setText("");
-                Correo.setText("");
-                Telefono.setText("");
-                Contraseña.setText("");
+            Nombre.setText("");
+            Correo.setText("");
+            Telefono.setText("");
+            Contraseña.setText("");
 
             Intent intent = new Intent(getApplicationContext(), MiCencel.class);
             startActivity(intent);
